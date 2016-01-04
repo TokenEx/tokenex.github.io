@@ -284,7 +284,6 @@ h6 {
   padding-left: 40px;
   padding-right: 40px;
   zoom: 1;
-  max-width: 700px;
 }
 .content:before,
 .content:after {
@@ -435,7 +434,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
 }
-@media (max-width: 1280px) {
+@media (max-width: 1180px) {
   .content pre > code {
     background: #f3f6fb;
     border: solid 1px #e7eaee;
@@ -508,15 +507,49 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 @media (min-width: 1180px) {
   body:not(.no-literate) .content-root {
     background-color: #f3f6fb;
-    -webkit-box-shadow: inset 880px 0 #fff, inset 881px 0 #dfe2e7, inset 890px 0 5px -10px rgba(0,0,0,0.1);
-    box-shadow: inset 880px 0 #fff, inset 881px 0 #dfe2e7, inset 890px 0 5px -10px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 830px 0 #fff, inset 831px 0 #dfe2e7, inset 840px 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 830px 0 #fff, inset 831px 0 #dfe2e7, inset 840px 0 5px -10px rgba(0,0,0,0.1);
+  }
+}
+@media (min-width: 1780px) {
+  body:not(.no-literate) .content-root {
+    background-color: #f3f6fb;
+    -webkit-box-shadow: inset 1200px 0 #fff, inset 1201px 0 #dfe2e7, inset 1210px 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 1200px 0 #fff, inset 1201px 0 #dfe2e7, inset 1210px 0 5px -10px rgba(0,0,0,0.1);
+  }
+}
+@media (min-width: 1180px) {
+  body:not(.no-literate) .content {
+    width: 1000px;
+  }
+  body:not(.no-literate) .content p,
+  body:not(.no-literate) .content h1,
+  body:not(.no-literate) .content h2,
+  body:not(.no-literate) .content h3,
+  body:not(.no-literate) .content h4 {
+    width: 600px;
+  }
+}
+@media (min-width: 1780px) {
+  body:not(.no-literate) .content {
+    width: 1570px;
+  }
+  body:not(.no-literate) .content p,
+  body:not(.no-literate) .content h1,
+  body:not(.no-literate) .content h2,
+  body:not(.no-literate) .content h3,
+  body:not(.no-literate) .content h4 {
+    width: 970px;
+  }
+  body:not(.no-literate) .content pre,
+  body:not(.no-literate) .content blockquote {
+    width: 600px !important;
   }
 }
 @media (min-width: 1180px) {
   body:not(.no-literate) .content {
     padding-left: 0;
     padding-right: 0;
-    width: 1050px;
     max-width: none;
   }
   body:not(.no-literate) .content > p,
@@ -530,7 +563,6 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > h6,
   body:not(.no-literate) .content > pre,
   body:not(.no-literate) .content > blockquote {
-    width: 650px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -579,7 +611,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > .small-heading,
   body:not(.big-h3) body:not(.no-literate) .content > h3 {
     margin-left: 40px;
-    width: 570px;
+    width: 520px;
     margin-bottom: 3px;
     padding-left: 0;
     padding-right: 0;
@@ -587,11 +619,11 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > table {
     margin-left: 40px;
     margin-right: 40px;
-    max-width: 570px;
+    max-width: 520px;
   }
   body:not(.no-literate):not(.big-h3) .content > h3 {
     margin-left: 40px;
-    width: 570px;
+    width: 520px;
     margin-bottom: 3px;
     padding-left: 0;
     padding-right: 0;
@@ -768,6 +800,13 @@ a.big.button:hover:visited {
 .menubar {
   font-size: 0.9em;
 }
+.menu .level-3 {
+  display: none;
+}
+.menu .active + .level-3,
+.menu .active + .level-3 .level-3 {
+  display: block;
+}
 .menu ul.level-1 > li + li {
   margin-top: 20px;
 }
@@ -804,6 +843,14 @@ a.big.button:hover:visited {
 .menu a.level-2 {
   font-weight: normal;
 }
+.menu a.level-3.active,
+.menu a.level-3.active:visited,
+.menu a.level-3.active:hover {
+  color: #325226 !important;
+}
+.menu a.level-3.active::after {
+  background: transparent;
+}
 .menu a.level-3 {
   font-weight: normal;
   font-size: 0.9em;
@@ -832,15 +879,11 @@ a.big.button:hover:visited {
   border-radius: 2px;
   background: #4c7d3a;
 }
-code .string,
-code .number {
+code {
   color: #4c7d3a;
 }
 code .init {
   color: #383;
-}
-code .keyword {
-  font-weight: bold;
 }
 code .comment {
   color: #adadcc;
