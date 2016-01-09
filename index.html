@@ -22,14 +22,9 @@
 
   <!-- Initializer -->
   <script>
-    var answer = confirm("What you are about to see is a preview of the new TokenEx API docs. \n \n Click 'OK' to Continue at your own risk or 'Cancel' to be redirected.")
-    if (answer) {
-        Flatdoc.run({
-            fetcher: Flatdoc.file(['content/API.md', 'content/Web.md', 'content/TGAPI.md', 'content/Appendix.md', 'content/gateway.md'])
-        });
-    } else {
-        window.location.replace("https://test-portal.tokenex.com/docs");
-    }
+	Flatdoc.run({
+		fetcher: Flatdoc.file(['content/API.md', 'content/Web.md', 'content/TGAPI.md', 'content/Appendix.md', 'content/gateway.md'])
+	});
   </script>
 
 </head>
