@@ -221,7 +221,7 @@ h6 {
   background: transparent;
   font-size: 0.85em;
   letter-spacing: -1px;
-  overflow-x: scroll;
+  overflow: hidden;
 }
 .content blockquote :first-child {
   padding-top: 0;
@@ -236,7 +236,7 @@ h6 {
   border-collapse: collapse;
   clear: both;
 }
-@media (min-width: 1180px) {
+@media (min-width: 1400px) {
   .content table {
     float: left;
   }
@@ -434,7 +434,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
   box-shadow: inset 2px 2px 3px rgba(0,0,0,0.2);
 }
-@media (max-width: 1180px) {
+@media (max-width: 1399px) {
   .content pre > code {
     background: #f3f6fb;
     border: solid 1px #e7eaee;
@@ -504,49 +504,51 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
 .content .button + em {
   color: #9090aa;
 }
-@media (min-width: 1180px) {
+@media (min-width: 1400px) {
   body:not(.no-literate) .content-root {
     background-color: #f3f6fb;
-    -webkit-box-shadow: inset 830px 0 #fff, inset 831px 0 #dfe2e7, inset 840px 0 5px -10px rgba(0,0,0,0.1);
-    box-shadow: inset 830px 0 #fff, inset 831px 0 #dfe2e7, inset 840px 0 5px -10px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 940px 0 #fff, inset 941px 0 #dfe2e7, inset 950px 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 940px 0 #fff, inset 941px 0 #dfe2e7, inset 950px 0 5px -10px rgba(0,0,0,0.1);
   }
 }
-@media (min-width: 1780px) {
+@media (min-width: 1800px) {
   body:not(.no-literate) .content-root {
     background-color: #f3f6fb;
-    -webkit-box-shadow: inset 1200px 0 #fff, inset 1201px 0 #dfe2e7, inset 1210px 0 5px -10px rgba(0,0,0,0.1);
-    box-shadow: inset 1200px 0 #fff, inset 1201px 0 #dfe2e7, inset 1210px 0 5px -10px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 1150px 0 #fff, inset 1151px 0 #dfe2e7, inset 1160px 0 5px -10px rgba(0,0,0,0.1);
+    box-shadow: inset 1150px 0 #fff, inset 1151px 0 #dfe2e7, inset 1160px 0 5px -10px rgba(0,0,0,0.1);
   }
 }
-@media (min-width: 1180px) {
+@media (min-width: 1400px) {
   body:not(.no-literate) .content {
-    width: 1000px;
+    width: 1160px;
   }
   body:not(.no-literate) .content p,
   body:not(.no-literate) .content h1,
   body:not(.no-literate) .content h2,
   body:not(.no-literate) .content h3,
-  body:not(.no-literate) .content h4 {
-    width: 600px;
+  body:not(.no-literate) .content h4,
+  body:not(.no-literate) .content ul,
+  body:not(.no-literate) .content ol,
+  body:not(.no-literate) .content table {
+    width: 710px;
   }
 }
-@media (min-width: 1780px) {
+@media (min-width: 1800px) {
   body:not(.no-literate) .content {
-    width: 1570px;
+    width: 1560px;
   }
   body:not(.no-literate) .content p,
   body:not(.no-literate) .content h1,
   body:not(.no-literate) .content h2,
   body:not(.no-literate) .content h3,
-  body:not(.no-literate) .content h4 {
-    width: 970px;
-  }
-  body:not(.no-literate) .content pre,
-  body:not(.no-literate) .content blockquote {
-    width: 600px !important;
+  body:not(.no-literate) .content h4,
+  body:not(.no-literate) .content ul,
+  body:not(.no-literate) .content ol,
+  body:not(.no-literate) .content table {
+    width: 920px;
   }
 }
-@media (min-width: 1180px) {
+@media (min-width: 1400px) {
   body:not(.no-literate) .content {
     padding-left: 0;
     padding-right: 0;
@@ -577,7 +579,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   }
   body:not(.no-literate) .content > pre,
   body:not(.no-literate) .content > blockquote {
-    width: 400px;
+    width: 450px;
     padding-left: 20px;
     padding-right: 20px;
     float: right;
@@ -611,7 +613,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > .small-heading,
   body:not(.big-h3) body:not(.no-literate) .content > h3 {
     margin-left: 40px;
-    width: 520px;
+    width: 630px;
     margin-bottom: 3px;
     padding-left: 0;
     padding-right: 0;
@@ -619,11 +621,11 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
   body:not(.no-literate) .content > table {
     margin-left: 40px;
     margin-right: 40px;
-    max-width: 520px;
+    max-width: 630px;
   }
   body:not(.no-literate):not(.big-h3) .content > h3 {
     margin-left: 40px;
-    width: 520px;
+    width: 630px;
     margin-bottom: 3px;
     padding-left: 0;
     padding-right: 0;
@@ -913,4 +915,10 @@ code .comment {
 .title-area > div {
   position: relative;
   z-index: 1;
+}
+@media (min-width: 1800px) {
+  body:not(.no-literate) .content > pre,
+  body:not(.no-literate) .content > blockquote {
+    width: 640px;
+  }
 }
