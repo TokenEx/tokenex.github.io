@@ -1,4 +1,4 @@
-### Gateway Parameters
+## Gateway Parameters
 ### Authorize.Net
 
 **URL:** http://www.authorize.net
