@@ -1,17 +1,13 @@
-## Gateway Parameters
+### Gateway Parameters
 ### Authorize.Net
-
 
 **URL:** http://www.authorize.net
-
 
 **Default Currency:** USD
-
 
 **Developer Documentation:** http://developer.authorize.net
-
 
-**Supported Parameters:**
+**Supported Parameters**
 
 Parent|Field Name|Type|Notes
 ---|---|---|---
@@ -117,13 +113,14 @@ Capture Sample:
 **URL:** http://www.beanstream.com
 
 **Developer Documentation:** http://developer.beanstream.com
+
 * A username and password is required for capture, void and refund transactions and can be added to your account under Administration -> Account settings -> Order settings -> Use username/password validation
 * API passcode and hash validation features are not supported and must not be enabled.
 
-**Supported Parameters:**
+**Supported Parameters**
 
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**BeanstreamGateway**
 gateway|login|string|Beanstream Merchant ID
 gateway|user|string|Beanstream Username. Required for capture, void, and refund transactions.
@@ -222,10 +219,10 @@ Capture Sample:
 
 **URL:** https://developers.braintreepayments.com/
 
-**Supported Parameters:**
+**Supported Parameters**
 
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**BraintreeBlueGateway**
 gateway|merchant_id|string|Braintree API Merchant ID
 gateway|public_key|string|Braintree API Public Key
@@ -319,12 +316,14 @@ Capture Sample:
 **URL:** https://www.chase.com
 
 **Developer Documentation:** https://secure.paymentech.com/developercenter
+
 * ChaseNetConnect supports the 'reverse' action which can be used to perform a 'reverse advice' or 'partial authorization reverse' transaction
 * Chase responses containing token data will be returned as multiple params of the format token_XX, where XX is the two letter token code"
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**ChaseNetConnectGateway**
 gateway|login|string|NetConnect Username
 gateway|password|string|NetConnect Password
@@ -424,9 +423,10 @@ Capture Sample:
 
 **Developer Documentation:** SOAP Toolkit API http://www.cybersource.com/developers/download/
 
-**Supported Parameters:**
+**Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**CyberSourceGateway**
 gateway|login|string|CyberSource Merchant ID
 gateway|password|string|CyberSource Transaction Security Key
@@ -530,8 +530,9 @@ Capture Sample:
 **Developer Documentation:** https://demo.myvirtualmerchant.com/VirtualMerchantDemo/download/developerGuide.pdf
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**ElavonGateway**
 gateway|login|string|Elavon SSL Merchant ID
 gateway|user|string|Elavon User ID
@@ -632,11 +633,13 @@ Capture Sample:
 **Default Currency:** USD
 
 **URL:** http://www.federatedpayments.com
+
 * The Federated gateway does not support a test API. You must enable or disable test mode on an account by account basis with Federated Payments.
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**FederatedGateway**
 gateway|login|string|Federated Payments Login
 gateway|password|string|Federated Payments Password
@@ -731,11 +734,13 @@ Capture Sample:
 **Default Currency:** CAD
 
 **URL:** http://www.federatedcanada.com/
+
 * The Federated Canada gateway does not support a test API. You must enable or disable test mode on an account by account basis with Federated Payments.
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**FederatedCanadaGateway**
 gateway|login|string|Federated Payments Canada Login
 gateway|password|string|Federated Payments Canada Password
@@ -830,12 +835,14 @@ Capture Sample:
 **URL:** http://www.firstdata.com
 
 **Default Currency:** 840
+
 * The Compass Gateway supports the 'authorize' and 'reverse' functions only.
 * A zero 'amount' value performs a credit card verify.
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**FirstdataCompassGateway**
 gateway|login|string|Username provided by FirstData
 gateway|password|string|Password provided by FirstData
@@ -903,8 +910,8 @@ Authorize Sample:
 ```
 ```javascript
 Capture Sample:
-Note: This gateway does not support the &#39;capture&#39; action. 
-This example is a &#39;reverse&#39; transaction.
+Note: This gateway does not support the 'capture' action. 
+This example is a 'reverse' transaction.
 
 {
   "APIKey": "XXXXXXXXX",
@@ -935,11 +942,13 @@ This example is a &#39;reverse&#39; transaction.
 **Default Currency:** USD
 
 **Developer Documentation:** https://firstdata.zendesk.com/entries/407571-First-Data-Global-Gateway-e4-Web-Service-API-Reference-Guide
+
 * Global Gateway e4 supports both open and tagged refunds. TokenEx by default creates a tagged refund. If a credit_card hash object is included in a refund request, then a open refund request is created.
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**FirstdataE4Gateway**
 gateway|login|string|Gateway ID (Found in your administration terminal settings)
 gateway|password|string|The terminal password
@@ -1020,16 +1029,99 @@ Capture Sample:
 ```
 
 
+### Global Cloud Pay
+
+**Default Currency:** USD
+
+**URL:** http://www.globalcloudpay.com
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**GlobalCloudPayGateway**
+gateway|merchant_id|string|GlobalCloudPay Merchant Number
+gateway|acctid|string|GlobalCloudPay Gateway Number
+gateway|password|string|GlobalCloudPay  Sign Key
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|order_id|string|
+transaction|email|string|
+transaction|ip|string|
+transaction|card_issue|string|Issuing bank
+transaction|description|string|
+transaction|custom|string|Global Cloud Pay 'csid' field
+transaction|billing_address|hash|
+billing_address|phone|string|
+billing_address|address1|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "GlobalCloudPayGateway",
+      "merchant_id": "XXXXXXXXX",
+      "acctid": "XXXXXXXXX",
+      "password": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4111111111111111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "email": "example@tokenex.com",
+      "ip": "127.0.0.1",
+      "order_id": "1",
+      "card_issue": "Bank of china",
+      currency: "USD",
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119",
+        "country": "US"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+This gateway implementation does not support the 'capture' method
+```
+
+
 ### Global Payments
 
 **URL:** https://www.globalpaymentsinc.com
 
 **Developer Documentation:** https://www.gpdevportal.com/
+
 * Global Payments supports the 'reverse' action 
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**GlobalPaymentsGateway**
 gateway|login|string|Global Payments Username
 gateway|password|string|Global Payments Password
@@ -1115,8 +1207,9 @@ Capture Sample:
 **Developer Documentation:** http://litleco.github.io
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**LitleGateway**
 gateway|merchant_id|string|Litle Merchant ID
 gateway|login|string|Litle User
@@ -1213,8 +1306,9 @@ Capture Sample:
 **URL:** https://www.cynergydata.com
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**LucyGateway**
 gateway|login|string|Lucy Gateway Login
 gateway|password|string|Lucy Gateway Password
@@ -1288,13 +1382,101 @@ Capture Sample:
 ```
 
 
+### Maxiopago
+
+**URL:** http://www.maxipago.com/
+
+**Developer Documentation:** http://www.maxipago.com/docs/maxiPago_API_Latest.pdf
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**MaxipagoGateway**
+gateway|login|string|Maxipago Merchant ID
+gateway|password|string|Maxipago Merchant Key
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|processor|string|Defaults to "1" in the sandbox environment and "4" in the production environment
+transaction|ip|string|
+transaction|billing_address|hash|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+billing_address|phone|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "MaxipagoGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX"
+    },
+    "credit_card": {
+      "first_name": "Bob",
+      "last_name": "Smith",
+      "number": "4111114356431111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "111"
+    },
+    "transaction": {
+      "amount": 1000,
+      "order_id": "12345",
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "MaxipagoGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX"
+    },
+    "transaction": {
+      "authorization": "359308705;12345;3632456",
+      "amount": 1000
+    }
+  }
+}
+```
+
+
 ### Merchant e-Solutions
 
 **URL:** https://www.merchante-solutions.com/
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**MerchantESolutionsGateway**
 gateway|login|string|MerchantESolutionsGateway Profile ID
 gateway|password|string|MerchantESolutionsGateway Key
@@ -1363,11 +1545,13 @@ Capture Sample:
 ### Merchant Link TV2G Payment Gateway
 
 **URL:** http://www.merchantlink.com
+
 * The 'reverse' action can be used to send a CCTimeout message
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**MerchantLinkGateway**
 gateway|login|string|Company Code assigned by Merchant Link
 gateway|subid|string|Site Code assigned by Merchant Link
@@ -1479,8 +1663,9 @@ Capture Sample:
 **Developer Documentation:** https://developer.moneris.com/
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**MonerisGateway**
 gateway|login|string|Moneris Store ID
 gateway|password|string|Moneris API Token
@@ -1557,8 +1742,9 @@ Capture Sample:
 **Developer Documentation:** https://developer.moneris.com/
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**MonerisUsGateway**
 gateway|login|string|Moneris Store ID
 gateway|password|string|Moneris API Token
@@ -1635,8 +1821,9 @@ Capture Sample:
 **Default Currency:** USD
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**NmiGateway**
 gateway|login|string|NMI Login
 gateway|password|string|NMI Password
@@ -1744,8 +1931,9 @@ Capture Sample:
 **Developer Documentation:** https://developer.optimalpayments.com
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**OptimalPaymentNetbanxGateway**
 gateway|acctid|string|Optimal Payments Account Number
 gateway|password|string|Optimal Payments API Key
@@ -1839,11 +2027,12 @@ Capture Sample:
 **Default Currency:** CAD
 
 **Developer Documentation:** http://download.chasepaymentech.com
-AVS is only supported for countries: US CA UK GB
 
+AVS is only supported for countries: US CA UK GB
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**OrbitalGateway**
 gateway|merchant_id|string|Orbital Merchant ID
 gateway|login|string|Orbital User
@@ -1951,8 +2140,9 @@ Capture Sample:
 **Developer Documentation:** http://help.paytrace.com/api
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**PayTraceGateway**
 gateway|login|string|PayTrace Login ID
 gateway|password|string|PayTrace Password
@@ -2041,8 +2231,9 @@ Capture Sample:
 **Developer Documentation:** https://developer.paypal.com/docs/classic/payflow/integration-guide
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**PayflowGateway**
 gateway|login|string|Payflow Login
 gateway|password|string|Payflow Password
@@ -2144,6 +2335,93 @@ Capture Sample:
 ```
 
 
+### Payment Express
+
+**URL:** https://www.paymentexpress.com
+
+**Developer Documentation:** https://www.paymentexpress.com/technical_resources/ecommerce_nonhosted/pxpost.html
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**PaymentExpressGateway**
+gateway|login|string|Payment Express PXPOST Username
+gateway|password|string|Payment Express PXPOST Password
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|authorization|string|Required only for captureand refund transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|description|string|
+transaction|currency|string|
+transaction|moto_ecommerce_ind|string|Can be used to set Payment Express field ClientType
+transaction|user_data_1|string|Can be used to set Payment Express field TxnData1
+transaction|user_data_2|string|Can be used to set Payment Express field TxnData2
+transaction|user_data_3|string|Can be used to set Payment Express field TxnData3
+transaction|billing_address|hash|
+billing_address|address1|string|
+billing_address|zip|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "PaymentExpressGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX"
+    },
+    "credit_card": {
+      "first_name": "Bob",
+      "last_name": "Smith",
+      "number": "4111114356431111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "111"
+    },
+    "transaction": {
+      "amount": 1000,
+      "currency", "AUD",
+      "order_id": "12345",
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "PaymentExpressGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX"
+    },
+    "transaction": {
+      "authorization": "359308705",
+      "amount": 1000
+    }
+  }
+}
+```
+
+
 ### Paymill
 
 **Default Currency:** EUR
@@ -2153,8 +2431,9 @@ Capture Sample:
 **Developer Documentation:** https://developers.paymill.com
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**PaymillGateway**
 gateway|public_key|string|Paymill API Public Key
 gateway|private_key|string|Paymill API Private Key
@@ -2219,8 +2498,9 @@ Capture Sample:
 **Developer Documentation:** https://developer.intuit.com/docs/030_qbms/0060_documentation
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**QbmsGateway**
 gateway|login|string|Set value to **qbms-test.tokenex.com** for TEST and set value to **qbms.tokenex.com** for LIVE
 gateway|ticket|string|QBMS Connection Ticket. Please contact TokenEx support to create your Connection Ticket.
@@ -2292,11 +2572,13 @@ Capture Sample:
 **URL:** https://www.sage.com
 
 **Developer Documentation:** https://www.sagepayments.net/developer/
+
 * The Sage gateway does not support a test API. You must enable or disable test mode on an account by account basis with Sage.
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**SageGateway**
 gateway|login|string|Sage Username
 gateway|password|string|Sage Password
@@ -2381,6 +2663,104 @@ Capture Sample:
 ```
 
 
+### SagePay
+
+**URL:** http://www.sagepay.co.uk
+
+**Default Currency:** GBP
+
+**Developer Documentation:** http://www.sagepay.co.uk/support/partners-and-developers-support
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**SagePayGateway**
+gateway|login|string|SagePay Vendor ID
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|description|string|
+transaction|email|string|
+transaction|ip|string|
+transaction|billing_address|hash|
+transaction|shipping_address|hash|
+billing_address|name|string|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+billing_address|phone|string|
+shipping_address|name|string|
+shipping_address|address1|string|
+shipping_address|address2|string|
+shipping_address|city|string|
+shipping_address|state|string|
+shipping_address|zip|string|
+shipping_address|country|string|
+shipping_address|phone|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "SagePayGateway",
+      "login": "XXXXXXXXXX"
+    },
+    "credit_card": {
+      "name": "Bob Smith",
+      "number": "4111114356431111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "111"
+    },
+    "transaction": {
+      "amount": 1000,
+      "order_id": "12345",
+      "billing_address": {
+        "name": "Bob Smith",
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "SagePayGateway",
+      "login": "XXXXXXXXXX"
+    },
+    "transaction": {
+      "authorization": "359308705;1111;2342",
+      "amount": 1000
+    }
+  }
+}
+```
+
+
 ### Secure Net
 
 **URL:** http://www.securenet.com
@@ -2388,8 +2768,9 @@ Capture Sample:
 **Developer Documentation:** http://www.securenet.com/files/Gateway_Implementation_Guide_4_1_5_Final.pdf
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**SecureNetGateway**
 gateway|login|string|SecureNet ID
 gateway|password|string|SecureNet SecureKey
@@ -2487,8 +2868,9 @@ Capture Sample:
 **Default Currency:** USD
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**SixGateway**
 gateway|login|string|Six Payment Services Merchant ID
 gateway|password|string|Six Payment Services Validation Code
@@ -2574,8 +2956,9 @@ Capture Sample:
 **Developer Documentation:** https://stripe.com/docs/
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**StripeGateway**
 gateway|login|string|Stripe Secret API Key
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
@@ -2593,6 +2976,7 @@ transaction|description|string|
 transaction|email|string|
 transaction|ip|string|
 transaction|idempotency_key|string|
+transaction|metadata|string|Pipe delimited key value pairs. Ex: key1=value1|key2=value2|key3]value3
 transaction|billing_address|hash|
 billing_address|address1|string|
 billing_address|address2|string|
@@ -2656,11 +3040,13 @@ Capture Sample:
 ### TransFirst
 
 **URL:** http://www.transfirst.com
+
 * The TransFirst classic gateway does not support the 'authorize' or 'capture' actions.
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**TransFirstGateway**
 gateway|login|string|TransFirst Merchant ID
 gateway|password|string|TransFirst RegKey
@@ -2680,8 +3066,8 @@ billing_address|zip|string|
 
 ```javascript
 Authorize Sample:
-Note: This gateway does not support the &#39;authorize&#39; action. 
-This example is a &#39;purchase&#39; transaction.
+Note: This gateway does not support the 'authorize' action. 
+This example is a 'purchase' transaction.
 
 {
   "APIKey": "XXXXXXXXXX",
@@ -2712,8 +3098,8 @@ This example is a &#39;purchase&#39; transaction.
 ```
 ```javascript
 Capture Sample:
-Note: This gateway does not support the &#39;capture&#39; action. 
-This example is a &#39;void&#39; transaction.
+Note: This gateway does not support the 'capture' action. 
+This example is a 'void' transaction.
 
 {
   "APIKey": "XXXXXXXXXX",
@@ -2742,8 +3128,9 @@ This example is a &#39;void&#39; transaction.
 **Developer Documentation:** http://wiki.usaepay.com/developer/transactionapi
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**UsaEpayTransactionGateway**
 gateway|login|string|USAePay Source Key
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
@@ -2857,8 +3244,9 @@ Capture Sample:
 **Developer Documentation:** http://support.worldpay.com/support/kb/gg/pdf/dxml.pdf
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**WorldpayGateway**
 gateway|login|string|Worldpay XMl Login
 gateway|password|string|Worldpay XML Password
@@ -2946,11 +3334,13 @@ Capture Sample:
 **Default Currency:** USD
 
 **Developer Documentation:** https://www.merchants.worldpay.us/docs
+
 * The Worldpay US gateway does not support a dedicated test API endpoint. Test cards provided by Worldpay can be used for testing.
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**WorldpayUsGateway**
 gateway|acctid|string|Worldpay Account ID
 gateway|subid|string|Worldpay Sub ID
@@ -3044,12 +3434,13 @@ Capture Sample:
 ### iATS Payments
 
 **URL:** http://www.iatspayments.com/
+
 * This gateway only supports purchase and refund actions
-
 
 **Supported Parameters**
+
 Parent|Field Name|Type|Notes
----|----|----|---
+---|---|---|---
 gateway|name|string|**IatsPaymentsGateway**
 gateway|login|string|iATS agent code
 gateway|password|string|iATS password
@@ -3077,8 +3468,8 @@ billing_address|zip|string|
 
 ```javascript
 Authorize Sample:
-The iATS Gateway dows not support &#39;authorize&#39;. 
-This example is a &#39;purchase&#39; request.
+The iATS Gateway dows not support 'authorize'. 
+This example is a 'purchase' request.
 {
   "APIKey": "XXXXXXXXXX",
   "TokenExID": "XXXXXXXXXX",
@@ -3110,8 +3501,8 @@ This example is a &#39;purchase&#39; request.
 ```
 ```javascript
 Capture Sample:
-The iATS Gateway dows not support &#39;capture&#39;. 
-This example is a &#39;refund&#39; request.
+The iATS Gateway dows not support 'capture'. 
+This example is a 'refund' request.
 {
   "APIKey": "XXXXXXXXXX",
   "TokenExID": "XXXXXXXXXX",
