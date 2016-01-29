@@ -97,20 +97,20 @@ Error  | string | Error Code and human readable description.
 TokenizeFromEncryptedValue is the method that you would call in order to tokenize a given encrypted value that was previously encrypted through Browser Based Encryption.  You will need to provide your TokenEx ID and authorized API Key, the data you wish to tokenize and your desired token scheme. 
 
 
-**URL:** https://test-api.tokenex.com/TokenServices.svc/REST/Tokenize
+**URL:** https://test-api.tokenex.com/TokenServices.svc/REST/TokenizeFromEncryptedValue
 
 **Request Parameters**
 Parameter  | Type | Description
 ------------- | -------------
 APIKey  | string |See   [Auth Model][auth]
 TokenExID  | string| Your TokenEx ID
-EncryptedData| string| The encrypted value of the sensitive data you wish to tokenize.
+EcryptedData| string| The encrypted value of the sensitive data you wish to tokenize.
 TokenScheme  | Enum | See   [Token Schemes][ts]
 ```javascript
 {
 	"APIKey":"YourAPIKey",
 	"TokenExID":"YourtokenExID",
-	"EncryptedData":"dGhpcyBpcyBzb21lIHJlYWxseSBsb25nIGNpcGhlciB0ZXh0IGZyb20gb3VyIFJTQSBsaWJyYXJ5",
+	"EcryptedData":"dGhpcyBpcyBzb21lIHJlYWxseSBsb25nIGNpcGhlciB0ZXh0IGZyb20gb3VyIFJTQSBsaWJyYXJ5",
 	"TokenScheme":1
 }
 ```
@@ -118,7 +118,7 @@ TokenScheme  | Enum | See   [Token Schemes][ts]
 <TokenAction>
  <APIKey>YourAPIKey</APIKey>
  <TokenExID>YourtokenExID</TokenExID>
- <EncryptedData>dGhpcyBpcyBzb21lIHJlYWxseSBsb25nIGNpcGhlciB0ZXh0IGZyb20gb3VyIFJTQSBsaWJyYXJ5</EncryptedData>
+ <EcryptedData>dGhpcyBpcyBzb21lIHJlYWxseSBsb25nIGNpcGhlciB0ZXh0IGZyb20gb3VyIFJTQSBsaWJyYXJ5</EcryptedData>
  <TokenScheme>sixTOKENfour</TokenScheme>
 </TokenAction>
 ```
