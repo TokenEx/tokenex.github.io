@@ -59,4 +59,4 @@ The iframe model provides maximum flexibility to the merchant, by only include t
 [postmessageLink]: [https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage]
 [tokenizeencrypted]: #tokenex-api-token-services-tokenizefromencryptedvalue
 [processtransactionandtokenize]:#tokenex-api-payment-services-process-transaction-and-tokenize
-[bbejsfiddle]: https://jsfiddle.net/TokenEx/0eepaxL1/
+[bbejsfiddle]: https://jsfiddle.net/TokenEx/pdx9qLqh/
