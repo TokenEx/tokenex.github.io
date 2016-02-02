@@ -224,7 +224,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Token Mapping:** 1:1
 
-**JSON value:** 17
+**JSON value:** 18
 
 ### Examples
 
@@ -246,6 +246,28 @@ sixASCIITOKENfour| 1324-123-4845796| 1324-1TFTFO5796
 fourASCIITOKENfour| 1324-123-484| 1324DI2-484
 ASCIITOKEN| 1324-123-484| D258G4F7R4FG
 
+## IP Addresses
+
+**Inbound to TokenEx**
+
+Host Name | IP Address | Port
+----|----|----
+test-batch.tokenex.com | 162.218.139.219 | TCP/22
+test-api.tokenex.com | 199.79.51.211 | TCP/443
+test-htp.tokenex.com | 199.79.51.212 |TCP/443
+test-portal.tokenex.com| 199.79.51.213 |TCP/443
+
+**Outbound from TokenEx**
+
+If you are using TokenEx to communicate to 3rd party service providers that utilize IP filtering, you'll need to update their white list accordingly 
+
+Service | Source IP
+----|-----
+Transparent Gateway API | 199.79.48.171
+Transparent Gateway API | 199.79.48.163
+Payment Services | 199.79.48.228
+Batch File Processing | 162.218.139.219
+
 
 ## Code Examples
 
@@ -253,7 +275,7 @@ To view sample code please visit our [Github repo][samples]. Contributions are w
 
 ## Glossary
 
-**LUHN:** LUHN - The Luhn algorithm or Luhn formula, also known as the "modulus 10" or "mod 10" algorithm, is a simple checksum formula used to validate a variety of identification numbers, such as credit card numbers, IMEI numbers, National Provider Identifier numbers in US and Canadian Social Insurance Numbers.
+**LUHN:** - The Luhn algorithm or Luhn formula, also known as the "modulus 10" or "mod 10" algorithm, is a simple checksum formula used to validate a variety of identification numbers, such as credit card numbers, IMEI numbers, National Provider Identifier numbers in US and Canadian Social Insurance Numbers.
 
 The formula verifies a number against its included check digit, which is usually appended to a partial account number to generate the full account number. This account number must pass the following test:
 
