@@ -56,7 +56,7 @@ The iframe model provides maximum flexibility to the merchant, by only include t
  4. Your page, the "parent" will use [postMessage][postmessageLink] to invoke the Tokenization process from within the iframe.
  5. The HTP iframe will use [postMessage][postmessageLink] to send the token back to your application
  
-[postmessageLink]: [https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage]
+[postmessageLink]: https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage
 [tokenizeencrypted]: #tokenex-api-token-services-tokenizefromencryptedvalue
 [processtransactionandtokenize]:#tokenex-api-payment-services-process-transaction-and-tokenize
 [bbejsfiddle]: https://jsfiddle.net/TokenEx/pdx9qLqh/

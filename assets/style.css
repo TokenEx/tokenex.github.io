@@ -122,10 +122,11 @@ input {
 }
 a {
   color: #4c7d3a;
-  text-decoration: none;
+  text-decoration: underline;
 }
 a:hover {
   color: #3d642e;
+  font-weight: bold;
 }
 /* ----------------------------------------------------------------------------
  * Content styling
@@ -825,6 +826,7 @@ a.big.button:hover:visited {
   padding-top: 1px;
   padding-bottom: 1px;
   margin-right: -30px;
+  text-decoration: none;
 }
 .menu a,
 .menu a:visited {
