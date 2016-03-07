@@ -39,7 +39,7 @@ This portion of the API is used to manage the entire token life cycle. You can d
 ### Tokenize
 Tokenize is the method that you would call in order to tokenize a given data set. You will need to provide your TokenEx ID and authorized API Key, the data you wish to tokenize and your desired token scheme.
 
-**URL:** https://test-api.tokenex.com/TokenServices.svc/REST/Tokenize
+**URI:** https://test-api.tokenex.com/TokenServices.svc/REST/Tokenize
 
 **Request Parameters**
 Parameter  | Type | Description
@@ -97,7 +97,7 @@ Error  | string | Error Code and human readable description.
 TokenizeFromEncryptedValue is the method that you would call in order to tokenize a given encrypted value that was previously encrypted through Browser Based Encryption.  You will need to provide your TokenEx ID and authorized API Key, the data you wish to tokenize and your desired token scheme. 
 
 
-**URL:** https://test-api.tokenex.com/TokenServices.svc/REST/TokenizeFromEncryptedValue
+**URI:** https://test-api.tokenex.com/TokenServices.svc/REST/TokenizeFromEncryptedValue
 
 **Request Parameters**
 Parameter  | Type | Description
@@ -155,7 +155,7 @@ Error  | string | Error Code and human readable description.
 Validates if the given token exists within your token vault.
 
 
-**URL:** https://test-api.tokenex.com/TokenServices.svc/REST/ValidateToken
+**URI:** https://test-api.tokenex.com/TokenServices.svc/REST/ValidateToken
 
 **Request Parameters**
 Parameter  | Type | Description
@@ -211,7 +211,7 @@ Error  | string | Error Code and human readable description.
 Allows you to retrieve the sensitive data associated with a given token. 
 
 
-**URL:** https://test-api.tokenex.com/TokenServices.svc/REST/Detokenize
+**URI:** https://test-api.tokenex.com/TokenServices.svc/REST/Detokenize
 
 **Request Parameters**
 Parameter  | Type | Description
@@ -267,7 +267,7 @@ Error  | string | Error Code and human readable description.
 Deletes the sensitive data and token from your token vault.
 
 
-**URL:** https://test-api.tokenex.com/TokenServices.svc/REST/DeleteToken
+**URI:** https://test-api.tokenex.com/TokenServices.svc/REST/DeleteToken
 
 **Request Parameters**
 Parameter  | Type | Description
@@ -316,7 +316,7 @@ Error  | string | Error Code and human readable description.
 
 ## P2PE Services
 
-P2PEServices allows customers to tokenize an encrypted value from a P2PE device. Our platform is device agnostic and supports both the PIN and Data block variants of [DUKPT][https://en.wikipedia.org/wiki/Derived_unique_key_per_transaction]
+P2PEServices allows customers to tokenize an encrypted value from a P2PE device. Our platform is device agnostic and supports both the PIN and Data block variants of [DUKPT][dukpt]
 
 Prior to testing this functionality, TokenEx will need to create an encryption profile for your account, and for production use, the production key will need to be loaded on the TokenEx HSM.  Please contact your project team for specific information related to your chosen P2PE device.
 
@@ -325,7 +325,7 @@ Prior to testing this functionality, TokenEx will need to create an encryption p
 Tokenizes data from a P2PE device.
 
 
-**URL:** https://test-api.tokenex.com/P2PEService.svc/REST/help/operations/Tokenize
+**URI:** https://test-api.tokenex.com/P2PEService.svc/REST/Tokenize
 
 **Request Parameters** 
 
@@ -398,7 +398,7 @@ The ProcessTransaction method allows you to conduct a transaction with a support
 
 The complete list of currently supported gateways, and details of input parameters for each of those gateways can be found in [Gateway Parameters][gp].
 
-**URL:** https://test-api.tokenex.com/PaymentServices.svc/REST/ProcessTransaction
+**URI:** https://test-api.tokenex.com/PaymentServices.svc/REST/ProcessTransaction
 
 **Request Parameters :** TokenEx Specific Parameters
 
@@ -496,7 +496,7 @@ The ProcessTransactionAndTokenize method allows you to conduct a transaction wit
 
 The complete list of currently supported gateways, and details of input parameters for each of those gateways can be found in [Gateway Parameters][gp].
 
-**URL:** https://test-api.tokenex.com/PaymentServices.svc/REST/ProcessTransactionAndTokenize
+**URI:** https://test-api.tokenex.com/PaymentServices.svc/REST/ProcessTransactionAndTokenize
 
 **Request Parameters :** TokenEx Specific Parameters
 
@@ -598,6 +598,9 @@ TransactionResult | bool| Indicator if the request was successfully parsed by th
 
 Generate a Kount hash value that can be sent directly to Kount for fraud validation of a given PAN.
 
+
+**URI:** https://test-api.tokenex.com/FraudServices.svc/REST/GetKountHashValue
+
 **Request Parameters**
 
 Parameter  | Type | Description
@@ -652,8 +655,9 @@ Error  | string | Error Code and human readable description.
 
 Generate a Kount hash value that can be sent directly to Kount for fraud validation of a given PAN and return a TokenEx token.
 
-**Request Parameters**
+**URI:** https://test-api.tokenex.com/FraudServices.svc/REST/GetKountHashValueAndTokenize
 
+**Request Parameters**
 Parameter  | Type | Description
 ------------- | -------------
 APIKey  | string |See   [Auth Model][auth]
@@ -714,10 +718,11 @@ Error  | string | Error Code and human readable description.
 
 ##Reporting Services
 
-
 ### Get Usage Stats
 
 This allows for usage statistic reporting through a method call.  You can return total tokens, as well as the number of calls for each method.
+
+**URI:** https://test-api.tokenex.com/ReportingServices.svc/REST/GetUsageStats
 
 **Request Parameters**
 
@@ -789,6 +794,7 @@ Error  | string | Error Code and human readable description.
 [auth]: #tokenex-api-authentication
 [tgapiError]: #transparent-gateway-api-error-handling
 [samples]: https://github.com/tokenex
+[dukpt]: https://en.wikipedia.org/wiki/Derived_unique_key_per_transaction
 [tokenizeencrypted]: #tokenex-api-token-services-tokenizefromencryptedvalue
 [processtransactionandtokenize]:#tokenex-api-payment-services-process-transaction-and-tokenize
 [bbejsfiddle]: https://jsfiddle.net/TokenEx/0eepaxL1/

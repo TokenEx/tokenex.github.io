@@ -32,6 +32,7 @@
 
  $document.on('flatdoc:ready', function() {
    $('.menu a').anchorjump();
+   $('a[href^="http"]').not(".menu").attr('target', '_blank');
  });
 
  /*
