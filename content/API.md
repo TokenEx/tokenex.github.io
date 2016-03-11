@@ -171,11 +171,11 @@ Token  | string | The token you wish to validate.
 }
 ```
 ```html
-<ValidateToken>
+<ValidateTokenAction>
  <APIKey>YourAPIKey</APIKey>
  <TokenExID>YourtokenExID</TokenExID>
  <Token>545454587415454</Token>
-</ValidateToken>
+</ValidateTokenAction>
 ```
 **Response Parameters**
 Parameter  | Type | Description
@@ -227,11 +227,11 @@ Token  | string | The token you wish to detokenize.
 }
 ```
 ```html
-<Detokenize>
+<DetokenizeAction>
  <APIKey>YourAPIKey</APIKey>
  <TokenExID>YourtokenExID</TokenExID>
  <Token>545454587415454</Token>
-</Detokenize>
+</DetokenizeAction>
 ```
 **Response Parameters**
 Parameter  | Type | Description
@@ -283,11 +283,11 @@ Token  | string | The token you wish to delete.
 }
 ```
 ```html
-<DeleteToken>
+<DeleteTokenAction>
  <APIKey>YourAPIKey</APIKey>
  <TokenExID>YourtokenExID</TokenExID>
  <Token>545454587415454</Token>
-</DeleteToken>
+</DeleteTokenAction>
 ```
 **Response Parameters**
 Parameter  | Type | Description
@@ -350,7 +350,7 @@ TokenScheme | Enum |  See   [Token Schemes][ts]
 }
 ```
 ```html
-<Tokenize>
+<TokenizeAction>
  <APIKey>YourAPIKey</APIKey>
  <TokenExID>YourtokenExID</TokenExID>
  <EncryptedTrack>0x15489</EncryptedTrack> 
@@ -358,7 +358,7 @@ TokenScheme | Enum |  See   [Token Schemes][ts]
  <KSN>0x54865</KSN>
  <RequestFormat>Hex</RequestFormat> 
  <TokenScheme>sixTOKENfour</TokenScheme>
-</Tokenize>
+</TokenizeAction>
 ```
 **Response Parameters**
 Parameter  | Type | Description
