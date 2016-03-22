@@ -1214,6 +1214,7 @@ gateway|name|string|**LitleGateway**
 gateway|merchant_id|string|Litle Merchant ID
 gateway|login|string|Litle User
 gateway|password|string|Litle Password
+gateway|endpoint|string|Set to 'prelive' to set the gateway endpoint to Litle's prelive test environment. Can only be enabled in TokenEx's TEST environment.
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
@@ -1226,6 +1227,11 @@ transaction|authorization|string|Required only for capture, refund, and void tra
 transaction|order_id|string|
 transaction|email|string|
 transaction|customer|string|
+transaction|report_group|string|
+transaction|order_source|string|
+transaction|merchant_affiliate|string|
+transaction|merchant_campaign|string|
+transaction|merchant_grouping_id|string|
 transaction|billing_address|hash|
 transaction|shipping_address|hash|
 billing_address|company|string|
