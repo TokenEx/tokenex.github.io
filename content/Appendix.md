@@ -12,7 +12,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Validation:** Numeric, Luhn compliant
 
-**Length:** 13-16
+**Length:** 13-19
 
 **Token Mapping:** 1:1
 
@@ -24,7 +24,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Validation:** Numeric, Luhn compliant
 
-**Length:** 13-16
+**Length:** 13-19
 
 **Token Mapping:** 1:1
 
@@ -37,7 +37,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Validation:** Numeric, Luhn compliant
 
-**Length:** 13-16
+**Length:** 13-19
 
 **Token Mapping:** 1:1
 
@@ -49,7 +49,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Validation:** none
 
-**Length:** n/a
+**Length:** 1-1000
 
 **Token Mapping:** 1:Many
 
@@ -59,7 +59,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format is used to tokenize a social security number.
 
-**Validation:** The data field must be 9 numerical digits
+**Validation:** Numeric
 
 **Length:** 9
 
@@ -71,7 +71,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format is used to tokenize any number combination.
 
-**Validation:** numerical digits
+**Validation:** Numeric
 
 **Length:** n/a
 
@@ -83,7 +83,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns a numeric token while retaining the last 4 digits of the input data.
 
-**Validation:** numerical digits
+**Validation:** Numeric
 
 **Length:** >= 8
 
@@ -95,7 +95,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns a numeric, length preserving token.
 
-**Validation:** numerical digits
+**Validation:** Numeric
 
 **Length:** >= 8
 
