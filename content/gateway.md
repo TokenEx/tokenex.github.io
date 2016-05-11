@@ -1222,6 +1222,10 @@ credit_card|verification_value|string|CVV/CSC
 credit_card|first_name|string|Cardholder first name
 credit_card|last_name|string|Cardholder last name
 credit_card|track_data|string|Track 1/Track 2 data
+check|routing_number|string|
+check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+check|number|string|
+check|account_type|string|
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
 transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
 transaction|order_id|string|
@@ -2026,7 +2030,7 @@ Capture Sample:
 ```
 
 
-### Orbital Paymentec
+### Orbital Chase
 
 **URL:** http://chasepaymentech.com
 
@@ -2503,13 +2507,17 @@ Capture Sample:
 
 **Developer Documentation:** https://developer.intuit.com/docs/030_qbms/0060_documentation
 
+* In order to access the TokenEx integration for QuickBooks, you must create an Intuit account and login to the following URLs to create a QuickBooks connection ticket. Please note that the QuickBooks tickets are different between TEST and PROD environments.
+  * [Test Environment](https://merchantaccount.ptc.quickbooks.com/j/sdkconnection?appid=1053321811&sessionEnabled=false)
+  * [Production Environment](https://merchantaccount.quickbooks.com/j/sdkconnection?appid=1148168705&sessionEnabled=false)
+
 **Supported Parameters**
 
 Parent|Field Name|Type|Notes
 ---|---|---|---
 gateway|name|string|**QbmsGateway**
 gateway|login|string|Set value to **qbms-test.tokenex.com** for TEST and set value to **qbms.tokenex.com** for LIVE
-gateway|ticket|string|QBMS Connection Ticket. Please contact TokenEx support to create your Connection Ticket.
+gateway|ticket|string|QBMS Connection Ticket. Please use the URLs above to create your Connection Ticket.
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
@@ -3125,6 +3133,85 @@ This example is a 'void' transaction.
 ```
 
 
+### TSYS
+
+**URL:** http://www.tsys.com
+
+**Developer Documentation:** https://tsys.force.com/partner/login  (TransITAPI3.0FileSpec)
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**TsysGateway**
+gateway|login|string|TSYS Device ID
+gateway|password|string|TSYS Transaction Key
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|authorization|string|Required only for capture and void transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|description|string|
+transaction|billing_address|hash|
+billing_address|address1|string|
+billing_address|zip|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "TsysGateway",
+      "login": "XXXXXXXXX",
+      "password": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4030006537191234",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "TsysGateway",
+      "login": "XXXXXXXXX",
+      "password": "XXXXXXXXX"
+    },
+    "transaction": {
+      "amount": 1200,
+      "authorization": "03847424452"
+    }
+  }
+}
+```
+
+
 ### USA ePay
 
 **URL:** http://www.usaepay.com
@@ -3235,6 +3322,105 @@ Capture Sample:
     "transaction": {
       "authorization": "359308705",
       "amount": 1000
+    }
+  }
+}
+```
+
+
+### WePay
+
+**URL:** http://www.wepay.com
+
+**Developer Documentation:** https://stage.wepay.com/developer
+
+**Default Currency:** USD
+
+WePay account must have the tokenization feature enabled
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**WepayGateway**
+gateway|login|string|WePay Client ID
+gateway|password|string|WePay Access Token
+gateway|acctid|string|WePay Account ID
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|email|string|
+transaction|ip|string|
+transaction|order_source|string|WePay original_device
+transaction|description|string|WePay short_description
+transaction|comment|string|WePay long_description
+transaction|goods_type|string|WePay type (Default is 'goods')
+transaction|url|string|WePay callback_uri
+transaction|order_id|string|WePay reference_id
+transaction|invoice_number|string|WePay unique_id
+transaction|billing_address|hash|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "WepayGateway",
+      "login": "XXXXXXXXX",
+      "password": "XXXXXXXXX",
+      "acctid": "XXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4012881888818888",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "999",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "email": "test@example.com"
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119",
+        "country": "US"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "PayTraceGateway",
+      "login": "XXXXXXXXX",
+      "password": "XXXXXXXXX",
+      "acctid": "XXXXXXXX"
+    },
+    "transaction": {
+      "amount": 0,
+      "authorization": "10000019|2332"
     }
   }
 }
