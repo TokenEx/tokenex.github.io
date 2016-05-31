@@ -2143,6 +2143,84 @@ Capture Sample:
 ```
 
 
+### Pay Dollar
+
+**Default Currency:** 702
+
+**URL:** http://www.paydollar.com
+
+* You must whitelist the TokenEx production IPs with PayDollar to use this integeration in the production environment
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**PayDollarGateway**
+gateway|merchant_id|string|PayDollar Merchant Number
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|order_id|string|
+transaction|email|string|
+transaction|ip|string|
+transaction|description|string|
+transaction|billing_address|hash|
+billing_address|first_name|string|
+billing_address|last_name|string|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "PayDollarGateway",
+      "merchant_id": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4111111111111111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "email": "example@tokenex.com",
+      "ip": "127.0.0.1",
+      "order_id": "1",
+      currency: "USD",
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119",
+        "country": "US"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+This gateway implementation does not support the 'capture' method
+```
+
+
 ### PayTrace
 
 **URL:** http://www.paytrace.com
@@ -3336,7 +3414,8 @@ Capture Sample:
 
 **Default Currency:** USD
 
-WePay account must have the tokenization feature enabled
+* The WePay account must have the tokenization feature enabled. Please enable this feature before using the integration.
+
 **Supported Parameters**
 
 Parent|Field Name|Type|Notes
