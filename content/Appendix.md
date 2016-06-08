@@ -266,7 +266,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format requires no validation and will return a random 38 character alpha-numeric token.
 
-**Validation:** Numeric(0-9)
+**Validation:** None
 
 **Length:** 1-1000
 
