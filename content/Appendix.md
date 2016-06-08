@@ -10,7 +10,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 ###sixTOKENfour
 **Description:** This format will return a LUHN compliant token retaining the original first 6 and last 4 digits of the card number.
 
-**Validation:** Numeric, Luhn compliant
+**Validation:** Numeric(0-9), Luhn compliant
 
 **Length:** 13-19
 
@@ -22,7 +22,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 ###fourTOKENfour
 **Description:** This format will return a LUHN compliant token retaining the original first 4 and last 4 digits of the card number.
 
-**Validation:** Numeric, Luhn compliant
+**Validation:** Numeric(0-9), Luhn compliant
 
 **Length:** 13-19
 
@@ -35,7 +35,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format will return a LUHN compliant token retaining the original last 4 digits of the card number.
 
-**Validation:** Numeric, Luhn compliant
+**Validation:** Numeric(0-9), Luhn compliant
 
 **Length:** 13-19
 
@@ -59,7 +59,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format is used to tokenize a social security number.
 
-**Validation:** Numeric
+**Validation:** Numeric(0-9)
 
 **Length:** 9
 
@@ -71,7 +71,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format is used to tokenize any number combination.
 
-**Validation:** Numeric
+**Validation:** Numeric(0-9)
 
 **Length:** n/a
 
@@ -83,9 +83,9 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns a numeric token while retaining the last 4 digits of the input data.
 
-**Validation:** Numeric
+**Validation:** Numeric(0-9)
 
-**Length:** >= 8
+**Length:** 8-38
 
 **Token Mapping:** 1:Many
 
@@ -95,9 +95,9 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns a numeric, length preserving token.
 
-**Validation:** Numeric
+**Validation:** Numeric(0-9)
 
-**Length:** >= 8
+**Length:** 8-38
 
 **Token Mapping:** 1:Many
 
@@ -107,9 +107,9 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns an alpha numeric, length preserving token retaining the original first 6 and last 4 digits of the input data.
 
-**Validation:** Alpha-Numeric, a-Z,0-9
+**Validation:** Alpha-Numeric(a-Z,0-9)
 
-**Length:** >= 13
+**Length:** 14-38
 
 **Token Mapping:** 1:1
 
@@ -119,9 +119,9 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns an alpha numeric, length preserving token retaining the original first 4 and last 4 digits of the input data.
 
-**Validation:** Alpha-Numeric, a-Z,0-9
+**Validation:** Alpha-Numeric(a-Z,0-9)
 
-**Length:** >= 11
+**Length:** 12-38
 
 **Token Mapping:** 1:1
 
@@ -131,9 +131,9 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns an alpha numeric, length preserving token retaining the original last 4 digits of the input data.
 
-**Validation:** Alpha-Numeric, a-Z,0-9
+**Validation:** Alpha-Numeric(a-Z,0-9)
 
-**Length:** >= 8
+**Length:** 8-38
 
 **Token Mapping:** 1:1
 
@@ -143,9 +143,9 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Description:**  This format returns an alpha numeric token, length preserving token.
 
-**Validation:** Alpha-Numeric, a-Z,0-9
+**Validation:** Alpha-Numeric(a-Z,0-9)
 
-**Length:** >= 4
+**Length:** 4-38
 
 **Token Mapping:** 1:1
 
@@ -154,40 +154,16 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 ### ANTOKENAUTO
 
-**Description:**  This format automatically uses one of the four ANTOKEN formats based on input length
+**Description:**  This format automatically selects an ANTOKEN type token scheme that will retain the maximum number of original characters.
 
-**Validation:** Alpha-Numeric, a-Z,0-9
+**Validation:** Alpha-Numeric(a-Z,0-9)
 
-**Length:** >= 4
+**Length:** 4-38
 
 **Token Mapping:** 1:1
 
 **JSON value:** 13
 
-### ASCIITOKENfour
-
-**Description:**  This format returns an ASCII, length preserving token retaining the original last 4 digits of the input data.
-
-**Validation:** Accepts any ASCII characters
-
-**Length:** >= 8
-
-**Token Mapping:** 1:1
-
-**JSON value:** 14
-
-
-### ASCIITOKEN
-
-**Description:**   This format returns an ASCII, length preserving token
-
-**Validation:** Accepts any ASCII characters
-
-**Length:** >= 4
-
-**Token Mapping:** 1:1
-
-**JSON value:** 15
 
 ### sixASCIITOKENfour
 
@@ -195,7 +171,7 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Validation:** Accepts any ASCII characters
 
-**Length:** >= 13
+**Length:** 14-38
 
 **Token Mapping:** 1:1
 
@@ -208,23 +184,95 @@ Token Schemes can be either multi use or single use. With a multi-use token sche
 
 **Validation:** Accepts any ASCII characters
 
-**Length:** >= 13
+**Length:** 12-38
 
 **Token Mapping:** 1:1
 
 **JSON value:** 17
 
-### ASCIITOKENAUTO
+### ASCIITOKENfour
 
-**Description:**  This format automatically uses one of the four ASCIITOKEN formats based on input length
+**Description:**  This format returns an ASCII, length preserving token retaining the original last 4 digits of the input data.
 
 **Validation:** Accepts any ASCII characters
 
-**Length:** >= 4
+**Length:** 8-38
+
+**Token Mapping:** 1:1
+
+**JSON value:** 14
+
+### ASCIITOKEN
+
+**Description:**   This format returns an ASCII, length preserving token
+
+**Validation:** Accepts any ASCII characters
+
+**Length:** 4-38
+
+**Token Mapping:** 1:1
+
+**JSON value:** 15
+
+### ASCIITOKENAUTO
+
+**Description:**  This format automatically selects an ASCIITOKEN type token scheme that will retain the maximum number of original characters.
+
+**Validation:** Accepts any ASCII characters
+
+**Length:** 4-38
 
 **Token Mapping:** 1:1
 
 **JSON value:** 18
+
+### sixNTOKENfour
+
+**Description:**  This format will return a numeric legth preserving token retaining the original first 6 and last 4 digits of the card number. 
+
+**Validation:** Numeric(0-9)
+
+**Length:** 14-38
+
+**Token Mapping:** 1:1
+
+**JSON value:** 19
+
+### fourNTOKENfour
+
+**Description:**  This format will return a numeric legth preserving token retaining the original first 4 and last 4 digits of the card number. 
+
+**Validation:** Numeric(0-9)
+
+**Length:** 12-38
+
+**Token Mapping:** 1:1
+
+**JSON value:** 20
+
+### NTOKENAUTO
+
+**Description:**  This format automatically selects the NTOKEN type token scheme that will retain the maximum number of original characters.
+
+**Validation:** Numeric(0-9)
+
+**Length:** 12-38
+
+**Token Mapping:** 1:1
+
+**JSON value:** 21
+
+### TOKEN
+
+**Description:**  This format requires no validation and will return a random 38 character alpha-numeric token.
+
+**Validation:** Numeric(0-9)
+
+**Length:** 1-1000
+
+**Token Mapping:** 1:1
+
+**JSON value:** 22
 
 ### Examples
 
@@ -245,6 +293,9 @@ ANTOKEN| 9876543210| 5FR962FGT0
 sixASCIITOKENfour| 1324-123-4845796| 1324-1TFTFO5796
 fourASCIITOKENfour| 1324-123-484| 1324DI2-484
 ASCIITOKEN| 1324-123-484| D258G4F7R4FG
+sixNTOKENfour| 999999999999999 |999999685129999
+fourNTOKENfour | 9999999999999 | 9999017819999
+TOKEN | ThisIsATest | DUH3JSLDTAYHUCO51MXY7IINZ8HLNDU90FMTTM
 
 ## IP Addresses
 
