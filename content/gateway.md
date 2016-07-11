@@ -491,6 +491,7 @@ Authorize Sample:
     },
     "transaction": {
       "amount": 1200,
+      "email", "null@cybersource.com",
       "billing_address": {
         "address1": "123 Maple Street",
         "city": "Tulsa",
@@ -922,7 +923,8 @@ This example is a 'reverse' transaction.
       "name": "FirstdataCompassGateway",
       "login": "XXXXXXXXX",
       "password": "XXXXXXXXX",
-      "pem": "CLIENT SSL CERTIFICATE (PEM FORMAT)"
+      "ssl_cert": "CLIENT SSL CERTIFICATE (PEM FORMAT)",
+      "ssl_key": "CLIENT SSL KEY (PEM FORMAT)"
     },
     "transaction": {
       "amount": 1200,
@@ -2070,6 +2072,10 @@ transaction|recurring_ind|string|
 transaction|transaction_index|string|Void requests only; TxRefIdx
 transaction|reversal_retry_number|string|Void requests only; ReversalRetryNumber
 transaction|online_reversal_ind|string|Void requests only; OnlineReversalInd
+transaction|dwwalletid|string|
+transaction|dwsli|string|
+transaction|dwincentiveind|string|
+transaction|digitalwallettype|string|
 transaction|billing_address|hash|
 billing_address|address1|string|
 billing_address|address2|string|
@@ -2203,7 +2209,7 @@ Authorize Sample:
       "email": "example@tokenex.com",
       "ip": "127.0.0.1",
       "order_id": "1",
-      currency: "USD",
+      currency: "702",
       "billing_address": {
         "address1": "123 Maple Street",
         "city": "Tulsa",
@@ -2653,6 +2659,97 @@ Capture Sample:
     "transaction": {
       "amount": 1200,
       "authorization": "10000019"
+    }
+  }
+}
+```
+
+
+### Qvalent (Westpac/PayWay)
+
+**URL:** https://www.payway.com.au
+
+**Default Currency:** AUD
+
+**Developer Documentation:** https://www.payway.com.au/core/DownloadsView
+
+* You must add the TokenEx TEST and PROD environment IP addresses to your account
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**QvalentGateway**
+gateway|login|string|PayWay API Username
+gateway|password|string|PayWay API Password
+gateway|merchant_id|string|PayWay Merchant ID
+gateway|ssl_cert|string|Client SSL certification provided by PayWay. The certificate must be in valid PEM format.
+gateway|ssl_key|string|Client SSL key provided by PayWay. The key should must be in valid PEM format.
+gateway|ssl_key_password|string|Optional ssl key encryption password. Must be provided if 'ssl_key' is encrypted.
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|ip|string|
+transaction|customer|string|
+transaction|cavv|string|
+transaction|xid|string|
+transaction|eci|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "QvalentGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX",
+      "merchant_id": "XXXX",
+      "ssl_cert": "CLIENT SSL CERTIFICATE (PEM FORMAT)",
+      "ssl_key": "CLIENT SSL KEY (PEM FORMAT)"
+    },
+    "credit_card": {
+      "number": "4111114356431111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "111",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1000,
+      "order_id": "1234512345",
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "QvalentGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX",
+      "merchant_id": "XXXX",
+      "ssl_cert": "CLIENT SSL CERTIFICATE (PEM FORMAT)",
+      "ssl_key": "CLIENT SSL KEY (PEM FORMAT)"          
+    },
+    "transaction": {
+      "authorization": "359308705",
+      "amount": 1000
     }
   }
 }
