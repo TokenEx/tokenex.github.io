@@ -1970,9 +1970,7 @@ billing_address|city|string|
 billing_address|state|string|
 billing_address|zip|string|
 billing_address|country|string|
-shipping_address|phone|string|
 shipping_address|address1|string|
-shipping_address|address2|string|
 shipping_address|city|string|
 shipping_address|state|string|
 shipping_address|zip|string|
