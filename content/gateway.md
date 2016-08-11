@@ -47,6 +47,8 @@ billing_address|city|string|
 billing_address|state|string|
 billing_address|zip|string|
 billing_address|country|string|
+billing_address|phone|string|
+billing_address|fax|string|
 shipping_address|name|string|
 shipping_address|company|string|
 shipping_address|address1|string|
@@ -448,6 +450,7 @@ transaction|currency|string|
 transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
 transaction|order_id|string|
 transaction|email|string|
+transaction|ip|string|
 transaction|drivers_license_number|string|
 transaction|drivers_license_state|string|
 transaction|billing_address|hash|
@@ -550,6 +553,7 @@ transaction|order_id|string|
 transaction|description|string|
 transaction|email|string|
 transaction|customer|string|
+transaction|ip|string|
 transaction|tax|string|
 transaction|eci|string|
 transaction|cavv|string|
@@ -623,6 +627,99 @@ Capture Sample:
     "transaction": {
       "amount": 1200,
       "authorization": "10000019;1234"
+    }
+  }
+}
+```
+
+
+### Element Express (Vantiv Integrated Payments)
+
+**URL:** http://www.elementps.com
+
+**Developer Documentation:** https://developer.vantiv.com/community/enterprise/pages/express-api
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**ElementGateway**
+gateway|merchant_id|string|Element Acceptor ID
+gateway|password|string|Element AccountToken
+gateway|acctid|string|Element AccountID
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+check|routing_number|string|
+check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+check|account_type|string|
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|terminal_id|string|Terminal setting for TerminalID (default value "01")
+transaction|order_source|string|Terminal setting for CardPresentCode (default value "UseDefault")
+transaction|input_method|string|Terminal setting for CardInputCode (default value "UseDefault")
+transaction|input_capability|string|Terminal setting for TerminalCapabilityCode (default value "UseDefault")
+transaction|operating_environment|string|Terminal setting for TerminalEnvironmentCode (default value "UseDefault")
+transaction|moto_ecommerce_ind|string|Terminal setting for MotoECICode (default value "NonAuthenticatedSecureECommerceTransaction")
+transaction|billing_address|hash|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|email|string|
+billing_address|phone|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "ElementGateway",
+      "merchant_id": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX",
+      "acctid": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4111114356431111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "111"
+    },
+    "transaction": {
+      "amount": 1000,
+      "order_id": "12345",
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "ElementGateway",
+      "merchant_id": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX",
+      "acctid": "XXXXXXXXX"
+    },
+    "transaction": {
+      "authorization": "359308705|1111",
+      "amount": 1000
     }
   }
 }
@@ -963,6 +1060,7 @@ credit_card|first_name|string|Cardholder first name
 credit_card|last_name|string|Cardholder last name
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
 transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|currency|string|
 transaction|order_id|string|
 transaction|description|string|
 transaction|email|string|
@@ -3622,6 +3720,7 @@ credit_card|year|string|4 digit value. Example: 2017
 credit_card|verification_value|string|CVV/CSC
 credit_card|first_name|string|Cardholder first name
 credit_card|last_name|string|Cardholder last name
+credit_card|brand|string|Card brand
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
 transaction|currency|string|
 transaction|authorization|string|Required only for capture, void, and refund transactions. Obtained from the authorize or purchase transactions
