@@ -80,7 +80,7 @@ The first step in using the iframe is to create a single use session. This allow
 
 The session is created by POSTing a json payload to the endpoint listed below. 
 
-**URI:** https://test-htp.tokenex.com/api/v1
+**URI:** https://test-htp.tokenex.com/api/v2
 
 **content-type:** application/json
 
@@ -118,7 +118,7 @@ Error  | string | Error Code and human readable description.
 
 ```javascript
 {
-  "HTPURL": "https://test-htp.tokenex.com/iframe/v1/14372391da774048a5f283e6f6538a6d",
+  "HTPURL": "https://test-htp.tokenex.com/iframe/v2/14372391da774048a5f283e6f6538a6d",
   "SessionID": "14372391da774048a5f283e6f6538a6d",
   "ReferenceNumber": "16060812561806163476",
   "Success": true,
