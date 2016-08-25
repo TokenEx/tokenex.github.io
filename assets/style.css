@@ -932,7 +932,7 @@ code .comment {
 /*Loading Spinner Styles*/
 .spinner {
   position: absolute;
-  top: 50%;
+  top: 40%;
   right: 50%;
   margin: auto;
   width: 64px;
