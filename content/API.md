@@ -1,12 +1,12 @@
 #TokenEx API
 
-The TokenEx API is a Web API that accepts JSON or XML payloads. It is important that your HTTP client uses TLS 1.2.
+The TokenEx API is a Web API that accepts JSON payloads. It is important that your HTTP client uses TLS 1.2.
 
 **Host** : test-api.tokenex.com
 
 **Port:** 443
 
-**Content Types: ** application/json or text/xml
+**Content Type: ** application/json
 
 
 

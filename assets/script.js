@@ -3,10 +3,22 @@
   var $document = $(document);
 
  /*
-  * Scrollspy.
+  * flatdoc:ready
   */
 
  $document.on('flatdoc:ready', function() {
+	
+	//hide xml examples unless it's explicitly requested
+	if(location.search !== "?xml"){
+		$(".lang-html").hide();
+	}	
+	 //hide the spinner
+	$(".spinner-container").hide();
+	 //Anchor jump links.
+	$('.menu a').anchorjump();
+	$('a[href^="http"]').not(".menu").attr('target', '_blank');
+	 
+	//Scrollspy.
     $("h2").scrollagent(function(cid, pid, currentElement, previousElement) {
       if (pid) {
        $("[href='#"+pid+"']").removeClass('active');
@@ -25,16 +37,16 @@
       }
     });
   });
-
- /*
-  * Anchor jump links.
-  */
-
- $document.on('flatdoc:ready', function() {
-   $('.menu a').anchorjump();
-   $('a[href^="http"]').not(".menu").attr('target', '_blank');
- });
-
+  
+/*
+*flatdoc:loading
+*/
+$(document).on('flatdoc:loading', function() {
+    // I don't like this section to appear
+    $(".spinner-container").show();
+});
+  
+  
  /*
   * Title card.
   */
