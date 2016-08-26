@@ -994,3 +994,7 @@ code .comment {
     -webkit-transform: scaleY(1.0);
   }
 }
+a {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
