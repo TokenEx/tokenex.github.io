@@ -230,6 +230,7 @@ gateway|merchant_id|string|Braintree API Merchant ID
 gateway|public_key|string|Braintree API Public Key
 gateway|private_key|string|Braintree API Private Key
 gateway|acctid|string|Optional Braintree Merchant Account ID
+gateway|channel|string|
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
@@ -651,18 +652,22 @@ credit_card|number|string|This is your TokenEx Token - Tokenex will replace the 
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
 credit_card|verification_value|string|CVV/CSC
-check|routing_number|string|
-check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
-check|account_type|string|
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
-transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
-transaction|order_id|string|
+transaction|authorization|string|Required only for capture, refund, void, and reverse transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|Element field Reference Number
+transaction|ticket|string|Element field Ticket Number
+transaction|market|string|Element field Market Code
 transaction|terminal_id|string|Terminal setting for TerminalID (default value "01")
-transaction|order_source|string|Terminal setting for CardPresentCode (default value "UseDefault")
-transaction|input_method|string|Terminal setting for CardInputCode (default value "UseDefault")
-transaction|input_capability|string|Terminal setting for TerminalCapabilityCode (default value "UseDefault")
-transaction|operating_environment|string|Terminal setting for TerminalEnvironmentCode (default value "UseDefault")
+transaction|card_present_code|string|Terminal setting for CardPresentCode (default value "NotPresent")
+transaction|cardholder_present_code|string|Terminal setting for CardPresentCode (default value "ECommerce")
+transaction|card_input_code|string|Terminal setting for CardInputCode (default value "ManualKeyed")
+transaction|input_capability|string|Terminal setting for TerminalCapabilityCode (default value "KeyEntered")
+transaction|operating_environment|string|Terminal setting for TerminalEnvironmentCode (default value "ECommerce")
 transaction|moto_ecommerce_ind|string|Terminal setting for MotoECICode (default value "NonAuthenticatedSecureECommerceTransaction")
+transaction|terminal_type|string|Terminal setting for TerminalType (default value "ECommerce")
+transaction|reverse_reason|string|Element field ReversalType
 transaction|billing_address|hash|
 billing_address|address1|string|
 billing_address|address2|string|
@@ -689,7 +694,9 @@ Authorize Sample:
       "number": "4111114356431111",
       "month": "4",
       "year": "2016",
-      "verification_value": "111"
+      "verification_value": "111",
+      "first_name": "Bob",
+      "last_name": "Smith"
     },
     "transaction": {
       "amount": 1000,
