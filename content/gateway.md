@@ -2688,6 +2688,109 @@ Capture Sample:
 ```
 
 
+### PayULatam
+
+**URL:** http://developers.payulatam.com/
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**PayuLatamGateway**
+gateway|merchant_id|string|PayU Merchant ID
+gateway|acctid|string|PayU Account ID
+gateway|login|string|PayU API Login
+gateway|private_key|string|PayU API Key
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|description|string|
+transaction|billing_address|hash|
+transaction|shipping_address|hash|
+billing_address|name|string|
+billing_address|phone|string|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+shipping_address|name|string|
+shipping_address|phone|string|
+shipping_address|address1|string|
+shipping_address|address2|string|
+shipping_address|city|string|
+shipping_address|state|string|
+shipping_address|zip|string|
+shipping_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "PayuLatamGateway",
+      "merchant_id": "XXXXXXXXX",
+      "acctid": "XXXXXXXXX"
+      "login": "XXXXXXXXX",
+      "private_key": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4030006537191234",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "billing_address": {
+        "name": "Bob Smith"
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119",
+        "country": "US",
+        "phone": "7563126"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "PayuLatamGateway",
+      "merchant_id": "XXXXXXXXX",
+      "acctid": "XXXXXXXXX"
+      "login": "XXXXXXXXX",
+      "private_key": "XXXXXXXXX"
+    },
+    "transaction": {
+      "amount": 1200,
+      "authorization": "10000019|12.00"
+    }
+  }
+}
+```
+
+
 ### QuickBooks Merchant Services
 
 **URL:** http://payments.intuit.com/
