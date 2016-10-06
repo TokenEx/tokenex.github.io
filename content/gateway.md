@@ -2135,7 +2135,7 @@ Capture Sample:
 ```
 
 
-### Orbital Chase
+### Orbital
 
 **URL:** http://chasepaymentech.com
 
@@ -2159,7 +2159,9 @@ credit_card|year|string|4 digit value. Example: 2017
 credit_card|verification_value|string|CVV/CSC
 credit_card|first_name|string|Cardholder first name
 credit_card|last_name|string|Cardholder last name
-credit_card|track_data|string|Track 1/Track 2 data
+check|routing_number|string|
+check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+check|account_type|string|
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
 transaction|currency|string|Default value is used if this value is not set. Format ISO alpha code
 transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
