@@ -967,8 +967,8 @@ a {
   position: absolute;
   content: '';
   background: url(/assets/Lock-knob-18.png);
-  top: 74px;
-  right: 12px;
+  top: 38px;
+  right: -1px;
   margin: 20px;
   width: 117px;
   height: 117px;
