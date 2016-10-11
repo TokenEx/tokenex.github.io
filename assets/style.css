@@ -970,7 +970,8 @@ a {
   background: url(/assets/Lock-knob-18.png);
   background-size: cover;
   top: 27px;
-  right: 9px;
+  right: 0;
+  left: 0;
   width: 57px;
   height: 57px;
 
