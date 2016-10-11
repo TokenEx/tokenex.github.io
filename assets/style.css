@@ -933,7 +933,8 @@ code .comment {
 .spinner {
   position: absolute;
   top: 40%;
-  right: 50%;
+  right: 0;
+  left: 0;
   margin: auto;
   width: 64px;
   height: 40px;
@@ -970,8 +971,7 @@ a {
   background: url(/assets/Lock-knob-18.png);
   background-size: cover;
   top: 27px;
-  right: 0;
-  left: 0;
+  right: 9px;
   width: 57px;
   height: 57px;
 
