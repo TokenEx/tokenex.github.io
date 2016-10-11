@@ -960,13 +960,13 @@ a {
   position: relative;
   height: 202px;
   width: 155px;
-  background: url(/assets/Lock-base-250px.png);
+  background: url(/assets/Lock-base-18.png);
 }
 
 .tokenex-loader:before {
   position: absolute;
   content: '';
-  background: url(/assets/Lock-knob-195.png);
+  background: url(/assets/Lock-knob-18.png);
   top: 74px;
   right: 12px;
   margin: 20px;
