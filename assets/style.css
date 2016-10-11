@@ -958,10 +958,9 @@ a {
 
 .tokenex-loader {
   position: relative;
-  height: 337px;
-  width: 258px;
+  height: 202px;
+  width: 155px;
   background: url(/assets/Lock-base-250px.png);
-  margin: 200px auto;
 }
 
 .tokenex-loader:before {
@@ -971,8 +970,8 @@ a {
   top: 74px;
   right: 12px;
   margin: 20px;
-  width: 195px;
-  height: 195px;
+  width: 117px;
+  height: 117px;
     -webkit-animation-name: spin;
     -webkit-animation-duration: 1500ms;
     -webkit-animation-iteration-count: infinite;
