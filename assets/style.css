@@ -1003,14 +1003,14 @@ a {
   position: relative;
   height: 337px;
   width: 258px;
-  background: url(assets/Lock-base-250px.png);
+  background: url(/assets/Lock-base-250px.png);
   margin: 200px auto;
 }
 
 .tokenex-loader:before {
   position: absolute;
   content: '';
-  background: url(assets/Lock-knob-195.png);
+  background: url(/assets/Lock-knob-195.png);
   top: 74px;
   right: 12px;
   margin: 20px;
