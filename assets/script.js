@@ -8,6 +8,11 @@
 
  $document.on('flatdoc:ready', function() {
 	
+	//remove wepay until
+	$('#appendix-gateway-parameters-wepay').nextUntil('h3').remove();
+	$('#appendix-gateway-parameters-wepay').remove();
+	$('#appendix-gateway-parameters-wepay-link').remove();
+	
 	//hide xml examples unless it's explicitly requested
 	if(location.search !== "?xml"){
 		$(".lang-html").hide();
