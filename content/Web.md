@@ -94,6 +94,7 @@ TokenScheme  | Enum | See   [Token Schemes][ts]
 OriginURL | string | fully qualified [Orign][origin]
 CustomerDefinedRefNumber | string | reference number from your application. This can be whatever you like
 CSS | string | CSS to apply to the iframe. See [Styling the Iframe][syle]
+PlaceHolder | string | Optionally sets the placeholder attribute of the input.
 
 ```javascript
 {
@@ -103,7 +104,9 @@ CSS | string | CSS to apply to the iframe. See [Styling the Iframe][syle]
     "CustomerRefnumber": "CustomerDefinedRefNumber",
     "CSS":"input {Your CSS Here }input:focus {Your CSS Here} input.error {Your CSS Here }",
     "APIKey": "YourAPIKey",
-    "TokenExID": "YourtokenExID"
+    "TokenExID": "YourtokenExID",
+	"PlaceHolder": "Credit Card"
+	
 }
 ```
 
@@ -170,6 +173,7 @@ load | the iframe has loaded
 focus | the input in the iframe has focus or not
 change | has the input changed
 validation | event containing the validation state of the input data
+cardTypeChange | the possible cardtype entered by the user has changed.
 post | event returned after the iframe's form has been submitted
 
 ```javascript
@@ -177,6 +181,7 @@ post | event returned after the iframe's form has been submitted
 {"event":"focus","data":{"value":true}}
 {"event":"change"}
 {"event":"validation","data":{"isValid":false,"validator":"required"}}
+{"event":"cardTypeChange","data":{"possibleCardType":"masterCard"}}
 {"event":"post","hmac":"hmacValue","data":{"success":true,"error":"","cardType":"masterCard","token":"tokenValue","sesssionID":"123","customerRefNumber":"abc"}}
 ```
 
