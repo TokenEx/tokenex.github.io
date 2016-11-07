@@ -1034,7 +1034,7 @@ This example is a 'reverse' transaction.
       "amount": 1200,
       "division_id": "XXXXXXXXX",
       "order_id": "1212",
-      "authorization": "OK885C;150116""
+      "authorization": "OK885C;150116"
     }
   }
 }
@@ -2228,7 +2228,7 @@ Capture Sample:
     },
     "transaction": {
       "amount": 1200,
-      "authorization": "c95ad35b-3d39-451f-8d82-46e1f9033e20""
+      "authorization": "c95ad35b-3d39-451f-8d82-46e1f9033e20"
     }
   }
 }
@@ -2890,6 +2890,80 @@ Capture Sample:
     }
   }
 }
+```
+
+
+### PromisePay
+
+**URL:** http://www.promisepay.com
+
+**Developer Documentation:** https://reference.promisepay.com
+
+* The PromisePay integeratsion only supports the 'purchase' action
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**PromisePayGateway**
+gateway|login|string|PromisePay Login
+gateway|private_key|string|PromisePay API Key
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+check|name|string|Name under which the account is maintained at the bank
+check|routing_number|string|
+check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+check|account_type|string|
+check|bank_name|string|
+check|account_type|string|
+check|account_holder_type|string|
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|email|string|
+transaction|ip|string|
+transaction|description|string|
+transaction|billing_address|hash|
+billing_address|zip|string|
+billing_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "PromisePayGateway",
+      "login": "XXXXXXXXX",
+      "private_key": "XXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4012881888818888",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "999",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "email": "test@example.com"
+      "billing_address": {
+        "zip": "74119",
+        "country": "US"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+Integeration does not support capture
 ```
 
 
