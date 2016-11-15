@@ -1050,6 +1050,7 @@ This example is a 'reverse' transaction.
 **Developer Documentation:** https://firstdata.zendesk.com/entries/407571-First-Data-Global-Gateway-e4-Web-Service-API-Reference-Guide
 
 * Global Gateway e4 supports both open and tagged refunds. TokenEx by default creates a tagged refund. If a credit_card hash object is included in a refund request, then a open refund request is created.
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
 
 **Supported Parameters**
 
@@ -1311,6 +1312,102 @@ Capture Sample:
     "transaction": {
       "amount": 1200,
       "authorization": "10000019"
+    }
+  }
+}
+```
+
+
+### Global One Pay Gateway
+
+**URL:** http://www.globalonepay.com/
+
+**Developer Documentation:** http://www.globalonepay.com/developers/ecommerce-integration
+
+* Global One Pay supports both standard and standalone refunds. TokenEx by default creates a standard refund. If a credit_card hash object is included in a refund request, then a standalone refund request is created.
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
+* An error of "Invalid HASH field" could mean that the private_key value is incorrect
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**GlobalOnePayGateway**
+gateway|tid|string|Global One Pay Termianl ID
+gateway|private_key|string|Global One Pay Shared Secret
+gateway|region|string|Set to "MCP" when using a multi-currency terminal otherwise this is field is optional
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|authorization|string|Required only for capture and standard refund transactions. Obtained from the authorize or purchase actions
+transaction|currency|string|
+transaction|order_id|string|
+transaction|description|string|
+transaction|email|string|
+transaction|ip|string|
+transaction|operator|string|
+transaction|reverse_reason|string|
+transaction|terminal_type|string|
+transaction|moto_ecommerce_ind|string|Maps to the "TRANSACTIONTYPE" field
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|Maps to the "REGION" field
+billing_address|zip|string|
+billing_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "GlobalOnePayGateway",
+      "tid": "XXXXXXXXX",
+      "private_key": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4030006537191234",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119",
+        "country": "US"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "GlobalOnePayGateway",
+      "tid": "XXXXXXXXX",
+      "private_key": "XXXXXXXXX"
+    },
+    "transaction": {
+      "amount": 1200,
+      "authorization": "2JNJDN83"
     }
   }
 }
@@ -3242,6 +3339,8 @@ Capture Sample:
 
 **Developer Documentation:** http://www.sagepay.co.uk/support/partners-and-developers-support
 
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
+
 **Supported Parameters**
 
 Parent|Field Name|Type|Notes
@@ -3525,6 +3624,8 @@ Capture Sample:
 **Default Currency:** USD
 
 **Developer Documentation:** https://stripe.com/docs/
+
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
 
 **Supported Parameters**
 
@@ -3992,6 +4093,8 @@ Capture Sample:
 **Default Currency:** GBP
 
 **Developer Documentation:** http://support.worldpay.com/support/kb/gg/pdf/dxml.pdf
+
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
 
 **Supported Parameters**
 
