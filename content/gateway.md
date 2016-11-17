@@ -1349,7 +1349,7 @@ transaction|order_id|string|
 transaction|description|string|
 transaction|email|string|
 transaction|ip|string|
-transaction|operator|string|
+transaction|operator_id|string|
 transaction|reverse_reason|string|
 transaction|terminal_type|string|
 transaction|moto_ecommerce_ind|string|Maps to the "TRANSACTIONTYPE" field
