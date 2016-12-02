@@ -4004,6 +4004,7 @@ gateway|name|string|**WepayGateway**
 gateway|login|string|WePay Client ID
 gateway|password|string|WePay Access Token
 gateway|acctid|string|WePay Account ID
+gateway|private_key|string|WePay Client Secret
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
