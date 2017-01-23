@@ -733,6 +733,110 @@ Capture Sample:
 ```
 
 
+### Electronic Payment Exchange (EPX)
+
+**URL:** http://www.epx.com
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**EpxGateway**
+gateway|cid|string|EPX Customer Number (CUST_NBR)
+gateway|mid|string|EPX Merchant Number (MERCH_NBR)
+gateway|subid|string|EPX DBA Number (DBA_NBR)
+gateway|tid|string|EPX Terminal Number (TERMINAL_NBR)
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+check|routing_number|string|
+check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+check|number|string|
+check|account_type|string|
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|authorization|string|Required only for capture, refund, reverse, and void transactions. Obtained from the authorize or purchase actions
+transaction|currency|string|
+transaction|first_name|string|Required only for Check payment type
+transaction|last_name|string|Required only for Check payment type
+transaction|report_group|string|EPX Batch ID (BATCH_ID)
+transaction|transaction_index|string|EPX Transaction Number (TRAN_NBR)
+transaction|input_method|string|EPX Card Entry method (CARD_ENT_METH), defaults to "X"
+transaction|card_present_code|string|EPX Card ID (CARD_ID)
+transaction|invoice_number|string|EPX Invoice Number (INVOICE_NBR)
+transaction|order_id|string|EPX Order Number (ORDER_NBR)
+transaction|user_data_1|string|EPX User Data (USER_DATA_1)
+transaction|user_data_2|string|EPX User Data (USER_DATA_2)
+transaction|user_data_3|string|EPX User Data (USER_DATA_3)
+transaction|billing_address|hash|
+billing_address|address1|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "EpxGateway",
+      "cid": "XXXXXXXXX",
+      "mid": "XXXXXXXXX",
+      "subid": "XXXXXXXXX",
+      "tid": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4030006537191234",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "report_group": "20170101",
+      "transaction_index": "1",
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "EpxGateway",
+      "cid": "XXXXXXXXX",
+      "mid": "XXXXXXXXX",
+      "subid": "XXXXXXXXX",
+      "tid": "XXXXXXXXX"
+    },
+    "transaction": {
+      "amount": 1200,
+      "report_group": "20170101",
+      "transaction_index": "1",
+      "authorization": "10000019;sale"
+    }
+  }
+}
+```
+
+
 ### Federated Payments
 
 **Default Currency:** USD
@@ -3814,6 +3918,7 @@ transaction|amount|integer|Transaction amount in cents. Example: $10.00 should b
 transaction|currency|string|
 transaction|authorization|string|Required only for capture and void transactions. Obtained from the authorize or purchase actions
 transaction|order_id|string|
+transaction|order_source|string|
 transaction|description|string|
 transaction|billing_address|hash|
 billing_address|address1|string|
