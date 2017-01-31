@@ -19,7 +19,7 @@ A working demo of illustrating these steps can be found [here][bbejsfiddle]
 
 #Hosted Tokenization Page
 
-The TokenEx HTP is a fully customized, managed "payment" page. This is NOT a traditional hosted payment page where the merchant has very few knobs to turn over the look and feel. This is NOT a "cookie cutter solution"; it's completely customized to suit your needs. Key capabilities include: 
+The TokenEx HTP is a fully customized, managed "payment" page. This is NOT a traditional hosted payment page where the merchant has very few knobs to turn over the look and feel. This is NOT a "cookie cutter solution"; it's completely customized to suit your needs. Key capabilities include:
 
  - Responsive Design
  - Custom domain name/TLS cert
@@ -27,7 +27,7 @@ The TokenEx HTP is a fully customized, managed "payment" page. This is NOT a tra
  - Marketing analytics
 	 - most analytical tools remain unaffected as page is hosted off of a sub domain.
  - Dynamic Data
-	 - To support continuity in the check out flow, you can send dynamic data from your application to your HTP. 
+	 - To support continuity in the check out flow, you can send dynamic data from your application to your HTP.
 	 - Example: You have the ability to display the customers name, order details, or any other data on the HTP.
  - Multiple "views" or variants of your HTP.
 	 - Example: You have different brands/products and need to show the HTP to reflect the proper brand.
@@ -39,7 +39,7 @@ TokenEx’s Hosted Payment Page integration model provides a 100% fully managed 
 ## Full Page(redirect)
 
 With the full page variant of the TokenEx HTP, the consumer is actually redirected your payment page that resides in the TokenEx secure environment.
- 
+
 **High Level Flow**
 
  1. Your application will establish a "session" with your HTP. This is a server side call to the HTP API where you provide any dynamic content and details used to authenticate the user/consumer.
@@ -47,11 +47,11 @@ With the full page variant of the TokenEx HTP, the consumer is actually redirect
  3. User/consumer completes the HTP form.
  4. HTP sends the Token and any other data captured to your application.
  5. User/Consumer is redirected back to your application
- 
+
 
 
 ## Iframe
-The iframe model provides maximum flexibility to the merchant, by only including the input for the PAN in the Iframe. The form will reside on your server, but the input for the Credit Card number will be replaced with an iframe that points to the TokenEx secure environment. 
+The iframe model provides maximum flexibility to the merchant, by only including the input for the PAN in the Iframe. The form will reside on your server, but the input for the Credit Card number will be replaced with an iframe that points to the TokenEx secure environment.
 
 
 **High Level Flow**
@@ -60,15 +60,15 @@ The iframe model provides maximum flexibility to the merchant, by only including
  2. Your application will add the iframe source as the HTP url.
  4. Your page, the "parent", will use [postMessage][postmessageLink] to invoke the Tokenization process from within the iframe.
  5. The HTP iframe will use [postMessage][postmessageLink] to send the token back to your application.
- 
+
 **Integration**
 
-The steps to integrate have been broken into two parts. 
+The steps to integrate have been broken into two parts.
 
 1. [Create a single use session][createsession]
 2. [Using the Iframe(Client Side)][useiframe]
 
-A working demo of illustrating these step 2 can be found [here][iframedemo] 
+A working demo of illustrating these step 2 can be found [here][iframedemo]
 
 **Note:** You must complete step 1 first and update the iframe src with the HTP url you were provided. For testing with JS fiddle, you will need to use "https://fiddle.jshell.net" as the OriginURL.
 
@@ -76,9 +76,9 @@ A working demo of illustrating these step 2 can be found [here][iframedemo]
 
 ###Create a single use session###
 
-The first step in using the iframe is to create a single use session. This allows you to provide the styling and prevents your TokenEx credentials from being exposed to the browser. 
+The first step in using the iframe is to create a single use session. This allows you to provide the styling and prevents your TokenEx credentials from being exposed to the browser.
 
-The session is created by POSTing a json payload to the endpoint listed below. 
+The session is created by POSTing a json payload to the endpoint listed below.
 
 **URI:** https://test-htp.tokenex.com/api/v2
 
@@ -106,7 +106,7 @@ PlaceHolder | string | Optionally sets the placeholder attribute of the input.
     "APIKey": "YourAPIKey",
     "TokenExID": "YourtokenExID",
 	"PlaceHolder": "Credit Card"
-	
+
 }
 ```
 
@@ -129,17 +129,17 @@ Error  | string | Error Code and human readable description.
 }
 ```
 
-###Using the iframe### 
+###Using the iframe###
 
-After you have created the single use session and rendered the HTP Iframe, all communication between parent and HTP iframe occur using postMessage. The iframe will send a JSON object back to the parent widow with 'events' containing information regarding the state of the iframe. 
-At a high level, your user will enter the credit card number into the iframe and you will invoke the the submit process by sending a tokenize 'command' to the iframe. 
+After you have created the single use session and rendered the HTP Iframe, all communication between parent and HTP iframe occur using postMessage. The iframe will send a JSON object back to the parent widow with 'events' containing information regarding the state of the iframe.
+At a high level, your user will enter the credit card number into the iframe and you will invoke the the submit process by sending a tokenize 'command' to the iframe.
 
 **Integration Steps**
 
  1. Add the iframe to your page. The source should be dynamic based on the HTP URL returned when you created the session.
  2. Add an event listener for the the "message" event.
  3. Interact with the iframe by sending 'comands'
- 
+
 
 
 #### Events and Commands###
@@ -199,7 +199,7 @@ validation | data | validator | string |'required' if the value is empty, 'inval
 post | self | n/a  | string | server side message from the iframe
 post | self | hmac  | string | HMACSHA256 of the data hash
 post | data | n/a  | object | object of additional properties
-post | data | success | bool |true or false 
+post | data | success | bool |true or false
 post | data | error | string |if success == false, this will contain a human readable error message
 post | data | cardType | string |type of the credit card, 'masterCard','amex', 'discover', 'visa', 'diners','jcb'
 post | data | token | string |Token value
@@ -235,7 +235,7 @@ function listener(event) {
         break;
       case 'post':
         if (!message.data.success) {
-          // use message.data.error 
+          // use message.data.error
         } else {
           //get token! message.data.token
         }
@@ -251,7 +251,7 @@ The iframe is styled by passing in the CSS on the server-side call to create the
 
 The TokenEx Iframe will automatically append the error CSS class when the validation fails.
 
-**Note:** there is a 500 character max on the CSS paramter. 
+**Note:** there is a 500 character max on the CSS paramter.
 
 ```CSS
 innput {
@@ -284,6 +284,6 @@ input.error {
 [origin]: https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy
 [syle]: #hosted-tokenization-page-iframe-styling-the-iframe
 [createsession]: #hosted-tokenization-page-iframe-create-a-single-use-session
-[useiframe]: #hosted-tokenization-page-iframe-using-the-iframe]
+[useiframe]: #hosted-tokenization-page-iframe-using-the-iframe
 [hmac]: https://en.wikipedia.org/wiki/Hash-based_message_authentication_code
 [iframedemo]: https://jsfiddle.net/TokenEx/rb8f53ac/
