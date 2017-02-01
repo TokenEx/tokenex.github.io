@@ -2478,6 +2478,7 @@ transaction|recurring_ind|string|
 transaction|transaction_index|string|Void requests only; TxRefIdx
 transaction|reversal_retry_number|string|Void requests only; ReversalRetryNumber
 transaction|online_reversal_ind|string|Void requests only; OnlineReversalInd
+transaction|card_indicators|string|
 transaction|dwwalletid|string|
 transaction|dwsli|string|
 transaction|dwincentiveind|string|
@@ -3807,6 +3808,100 @@ Capture Sample:
     "transaction": {
       "authorization": "359308705",
       "amount": 1000
+    }
+  }
+}
+```
+
+
+### Transaction Network Services (TNS)
+
+**URL:** http://www.tnsi.com/
+
+**Default Currency:** USD
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**TnsGateway**
+gateway|merchant_id|string|TNS Merchant ID
+gateway|password|string|TNS API Password
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|currency|string|
+transaction|email|string|
+transaction|ip|string|
+transaction|billing_address|hash|
+transaction|shipping_address|hash|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+billing_address|phone|string|
+shipping_address|name|string|
+shipping_address|address1|string|
+shipping_address|address2|string|
+shipping_address|city|string|
+shipping_address|state|string|
+shipping_address|zip|string|
+shipping_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "TnsGateway",
+      "merchant_id": "XXXXXXXXX",
+      "password": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4030006537191234",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "TnsGateway",
+      "merchant_id": "XXXXXXXXX",
+      "password": "XXXXXXXXX"
+    },
+    "transaction": {
+      "amount": 1200,
+      "authorization": "10000019;sale"
     }
   }
 }
