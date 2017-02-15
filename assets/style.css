@@ -86,6 +86,9 @@ table {
   border-spacing: 0;
   vertical-align: middle;
 }
+thead {
+	white-space: nowrap;
+}
 caption,
 th,
 td {
@@ -236,6 +239,7 @@ h6 {
   padding: 0;
   border-collapse: collapse;
   clear: both;
+  width: 100%
 }
 @media (min-width: 1400px) {
   .content table {
@@ -628,6 +632,7 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     margin-right: 40px;
     max-width: 630px;
   }
+
   body:not(.no-literate):not(.big-h3) .content > h3 {
     margin-left: 40px;
     width: 630px;
@@ -636,6 +641,12 @@ body.no-literate .content pre > code:hover::-webkit-scrollbar-thumb {
     padding-right: 0;
   }
 }
+@media (min-width: 1800px){
+  body:not(.no-literate) .content > table {
+	max-width: 820px;
+  }
+}
+
 .header {
   background: #f3f6fb;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
