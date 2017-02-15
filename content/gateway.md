@@ -37,7 +37,7 @@ transaction|ip|string|
 transaction|customer|string|
 transaction|cavv|string|
 transaction|eci|string|
-transaction|disable_partial_auth|string|desc
+transaction|disable_partial_auth|string|Set to 'yes' to enable
 transaction|billing_address|hash|
 transaction|shipping_address|hash|
 billing_address|name|string|
@@ -1334,6 +1334,7 @@ gateway|name|string|**GlobalCollectGateway**
 gateway|merchant_id|string|Global Collect Merchant ID
 gateway|login|string|Global Collect API Key ID
 gateway|private_key|string|Global Collect Secret API Key
+gateway|endpoint|string|In TokenEx's TEST environment, this value can be set to 'preprod' to utilize GlobalCollect's PreProd endpoint
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
