@@ -2,31 +2,54 @@
 
 Sometimes a client may want to encrypt data before sending it to TokenEx.  In this case, a TokenEx generated  RSA public encryption key is used to encrypt credit card information from within the client's browser.  The user will then submit the encrypted information to your website.  Once this step is complete, the encrypted value can be passed to TokenEx to be tokenized.  At this point, it is up to the merchant software to validate the inputs (like order total) and execute any further TokenEx Web-Service functions (like those for payment processing).  
 
-**PCI Compliance**
-
-TokenEx’s Browser-Based Encryption implementation model allows e-commerce payment card data to be secured before it ever leaves the consumer’s system. The merchant’s website does not receive unsecured cardholder data while still allowing for maximum customization, flexibility, and a positive user experience. While the merchant no longer receives unencrypted payment card data, the webserver is still partial responsible for the secure processing of card holder data which leads to increased PCI compliance requirements.   Merchants using TokenEx’s Browser-Based encryption for payment card acceptance may qualify to use Self-Assessment Questionnaire A-EP to validate PCI compliance.
-
 ## Integration Steps
 
 1. Reference the TokenEx Javascript.  This must be referenced in the header of the application web page.
 2. Add your public key to a hidden field.
 3. Encrypt.  Call the TokenEx Javascript function to encrypt the sensitive data.
 4. Remove the sensitive data from the POST to your web server and add the encrypted value.  
- 5. Obtain your token.  From your web server, you will make a call to the TokenEx API to [Tokenize][tokenizeencrypted], or [Process Transaction and Tokenize][processtransactionandtokenize] if you plan to send a transaction directly to an integrated payment processor
+5. Obtain your token.  From your web server, you will make a call to the TokenEx API to [Tokenize][tokenizeencrypted], or [Process Transaction and Tokenize][processtransactionandtokenize] if you plan to send a transaction directly to an integrated payment processor
 
 A working demo of illustrating these steps can be found [here][bbejsfiddle]
 
 
+```javascript
+{
+  //grab the public key from the hidden field
+  var key = document.getElementById('TxEncryptionKey').value;
+  //grab the PAN
+  var creditCard = document.getElementById("txtCreditCard").value;
+
+  //encrypt the data 
+  var cipherText = TxEncrypt(key, creditCard);
+  
+  //add the cipherText value to your form
+  document.getElementById('cpihertext').value = cipherText;
+  
+  //remove the PAN data from your form
+  document.getElementById("txtCreditCard").value = "";
+  
+  //post your form to your server.
+}
+```
+
+### Public Key
+
+The public key for the test environment is below
+
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvWpIQFjQQCPpaIlJKpeg
+irp5kLkzLB1AxHmnLk73D3TJbAGqr1QmlsWDBtMPMRpdzzUM7ZwX3kzhIuATV4Pe
+7RKp3nZlVmcrT0YCQXBrTwqZNh775z58GP2kZs+gVfNqBampJPzSB/hB62KkByhE
+Cn6grrRjiAVwJyZVEvs/2vrxaEpO+aE16emtX12RgI5JdzdOiNyZEQteU6zRBRJE
+ocPWVxExaOpVVVJ5+UnW0LcalzA+lRGRTrQJ5JguAPiAOzRPTK/lYFFpCAl/F8wt
+oAVG1c8zO2NcQ0Pko+fmeidRFxJ/did2btV+9Mkze3mBphwFmvnxa35LF+Cs/XJHDwIDAQAB
+
+
 #Tokenization Iframe
 
+The Tokenization Iframe provides maximum flexibility to the merchant, by only including the input for the sensitive data to tokenize in the Iframe. The form will reside on your server, but the input for the sensitive data will be replaced with an iframe that points to the TokenEx secure environment.
 
-**PCI Compliance**
-TokenEx’s Hosted Payment Page integration model provides a 100% fully managed card acceptance channel. The entirety of all payment pages are delivered to consumer’s browser originating directly from TokenEx. Payment Card data is stored, processed, and transmitted entirely within TokenEx’s secure environment thereby fully removing your entire network and systems from PCI scope. Merchants using the Hosted Payment Page may qualify to use Self-Assessment Questionnaire A to validate PCI compliance.
-
-
-The iframe model provides maximum flexibility to the merchant, by only including the input for the sensitive data to tokenize in the Iframe. The form will reside on your server, but the input for the sensitive data will be replaced with an iframe that points to the TokenEx secure environment.
-
-The iframe can be used to collect virtually any dataset. Customers who wish to use the iframe for collecting PCI data should
+The iframe can be used to collect virtually any dataset. Customers who wish to use the iframe for collecting PCI data should use the "PCI" variant.
 
 
 **High Level Flow**
@@ -174,7 +197,7 @@ validation | data | n/a  | object | object of additional properties  | X | X
 validation | data | isValid | bool |true if the input data is valid, false if not  | X | X
 validation | data | lastFour | string | last 4 characters of input data | X |
 validation | data | firstSix | string | first 6 characters of input data | X |
-validation | data | cardType | string |type of the credit card, 'masterCard','amex', 'discover', 'visa', 'diners','jcb' | X |
+validation | data | cardType | string |type of the credit card, 'masterCard','americanExpress', 'discover', 'visa', 'diners','jcb' | X |
 validation | data | characterCount | int | legth of the input data |  | X
 validation | data | validator | string |'required' if the value is empty, 'invalid' if the data is invalid | X | X
 post | self | n/a  | string | server side message from the iframe | X | X
@@ -182,7 +205,7 @@ post | self | hmac  | string | HMACSHA256 of the data hash | X | X
 post | data | n/a  | object | object of additional properties | X | X
 post | data | success | bool |true or false | X | X
 post | data | error | string |if success == false, this will contain a human readable error message | X | X
-post | data | cardType | string |type of the credit card, 'masterCard','amex', 'discover', 'visa', 'diners','jcb' | X |
+post | data | cardType | string |type of the credit card, 'masterCard','americanExpress', 'discover', 'visa', 'diners','jcb' | X |
 post | data | characterCount | int | legth of the input data |  | X
 post | data | token | string |Token value | X | X
 post | data | sesssionID | string |HTP Session ID | X | X
