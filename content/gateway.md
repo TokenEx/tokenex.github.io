@@ -241,6 +241,9 @@ transaction|amount|integer|Transaction amount in cents. Example: $10.00 should b
 transaction|authorization|string|Required only for capture, void, and refund transactions. Obtained from the authorize or purchase transactions.
 transaction|order_id|string|
 transaction|email|string|
+transaction|descriptor_name|string|
+transaction|descriptor_phone|string|
+transaction|descriptor_url|string|
 transaction|billing_address|hash|
 transaction|shipping_address|hash|
 billing_address|company|string|
@@ -763,8 +766,8 @@ transaction|first_name|string|Required only for Check payment type
 transaction|last_name|string|Required only for Check payment type
 transaction|report_group|string|EPX Batch ID (BATCH_ID)
 transaction|transaction_index|string|EPX Transaction Number (TRAN_NBR)
-transaction|input_method|string|EPX Card Entry method (CARD_ENT_METH), defaults to "X"
 transaction|card_present_code|string|EPX Card ID (CARD_ID)
+transaction|moto_ecommerce_ind|string|Set value to 'MOTO' when performing MOTO transactions
 transaction|invoice_number|string|EPX Invoice Number (INVOICE_NBR)
 transaction|order_id|string|EPX Order Number (ORDER_NBR)
 transaction|user_data_1|string|EPX User Data (USER_DATA_1)
