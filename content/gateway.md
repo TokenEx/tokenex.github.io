@@ -3020,6 +3020,7 @@ transaction|currency|string|
 transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
 transaction|order_id|string|
 transaction|description|string|
+transaction|payment_country|string|
 transaction|billing_address|hash|
 transaction|shipping_address|hash|
 billing_address|name|string|
@@ -3757,7 +3758,7 @@ transaction|description|string|
 transaction|email|string|
 transaction|ip|string|
 transaction|idempotency_key|string|
-transaction|metadata|string|Pipe delimited key value pairs. Ex: key1=value1|key2=value2|key3]value3
+transaction|metadata|string|Pipe delimited key value pairs. Ex: key1=value1&#124;key2=value2&#124;key3=value3
 transaction|billing_address|hash|
 billing_address|address1|string|
 billing_address|address2|string|
