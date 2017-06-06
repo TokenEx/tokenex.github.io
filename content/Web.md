@@ -199,7 +199,7 @@ validation | data | lastFour | string | last 4 characters of input data | X |
 validation | data | firstSix | string | first 6 characters of input data | X |
 validation | data | cardType | string |type of the credit card, 'masterCard','americanExpress', 'discover', 'visa', 'diners','jcb' | X |
 validation | data | characterCount | int | legth of the input data |  | X
-validation | data | validator | string |'required' if the value is empty, 'invalid' if the data is invalid | X | X
+validation | data | validator | string |'required' if the value is empty, 'invalid' if the data is invalid, 'posted' if the iframe session has already been used. | X | X
 post | self | n/a  | string | server side message from the iframe | X | X
 post | self | hmac  | string | HMACSHA256 of the data hash | X | X
 post | data | n/a  | object | object of additional properties | X | X

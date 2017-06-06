@@ -60,4 +60,50 @@ Error JSON:
  }
 ```
 
+## Examples
+
+```bash
+POST https://test-api.tokenex.com/TransparentGatewayAPI HTTP/1.1
+Content-Type: application/json
+tx_url: https://www.example.com
+TX_TokenExID: XXXXXXXXXX
+TX_APIKey: XXXXXXXXXX
+
+
+{
+	"card": {
+		"type": "MC ",
+		"number": "{{{5454545454545454}}}",
+		"expDate": "1112",
+		"cardValidationNum": "123"
+	}
+}
+```
+
+```bash
+POST https://test-api.tokenex.com/TransparentGatewayAPI HTTP/1.1
+Content-Type: text/xml
+tx_url: https://www.example.com
+TX_TokenExID: XXXXXXXXXX
+TX_APIKey: XXXXXXXXXX
+
+
+<card>
+	<type>MC</type>
+	<number>{{{5454545454545454}}}</number>
+	<expDate>1112</expDate>
+	<cardValidationNum>123</cardValidationNum>
+</card>
+```
+
+```bash
+POST https://test-api.tokenex.com/TransparentGatewayAPI HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+tx_url: https://www.example.com
+TX_TokenExID: XXXXXXXXXX
+TX_APIKey: XXXXXXXXXX
+
+
+type=MC&number={{{5454545454545454}}}&expDate=1112&cardValidationNum=123
+```
 [tgapiError]: #transparent-gateway-api-error-handling
