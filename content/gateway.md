@@ -429,13 +429,15 @@ Capture Sample:
 
 **Developer Documentation:** SOAP Toolkit API http://www.cybersource.com/developers/download/
 
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
+
 **Supported Parameters**
 
 Parent|Field Name|Type|Notes
 ---|---|---|---
 gateway|name|string|**CyberSourceGateway**
 gateway|login|string|CyberSource Merchant ID
-gateway|password|string|CyberSource Transaction Security Key
+gateway|password|string|CyberSource Transaction Security Key (SOAP Toolkit API)
 gateway|ignore_avs|string|Set this field to any value to enable
 gateway|ignore_cvv|string|Set this field to any value to enable
 gateway|decline_avs_flags|string|
@@ -525,6 +527,104 @@ Capture Sample:
     "transaction": {
       "amount": 1200,
       "authorization": "10000019;12.00;PA"
+    }
+  }
+}
+```
+
+
+### Doku
+
+**URL:** http://www.doku.com
+
+**Default Currency:** 360
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**DokuGateway**
+gateway|mid|string|Doku MALLID
+gateway|private_key|string|Doku API Shared Key
+gateway|subid|string|CHAINMERCHANT
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+credit_card|first_name|string|Cardholder first name
+credit_card|last_name|string|Cardholder last name
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|authorization|string|Required only for void transactions. Obtained from the purchase action
+transaction|order_id|string|TRANSIDMERCHANT
+transaction|description|string|BASKET
+transaction|email|string|
+transaction|custom|string|ADDITIONALDATA
+transaction|eci|string|
+transaction|xid|string|
+transaction|authentication_id|string|AUTHRESRESPONSECODE
+transaction|authentication_method|string|CAVVALGORITHM
+transaction|authentication_status|string|AUTHRESSTATUS
+transaction|cavv|string|
+billing_address|phone|string|
+billing_address|address1|string|
+billing_address|city|string|
+billing_address|state|string|
+billing_address|zip|string|
+billing_address|country|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "DokuGateway",
+      "mid": "XXXXXXXXX",
+      "private_key": "XXXXXXXXX"
+    },
+    "credit_card": {
+      "number": "4030006537191234",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "123",
+      "first_name": "Bob",
+      "last_name": "Smith"
+    },
+    "transaction": {
+      "amount": 1200,
+      "order_id": "39dj3i8dj2",
+      "eci": "00",
+      "email": "test@doku.com",
+      "description": "testing item,10000.00,1,10000.00",
+      "billing_address": {
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "state": "OK",
+        "zip": "74119",
+        "country": "US"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXX",
+  "TokenExID": "XXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "DokuGateway",
+      "mid": "XXXXXXXXX",
+      "private_key": "XXXXXXXXX"
+    },
+    "transaction": {
+      "amount": 1200,
+      "authorization": "10000019"
     }
   }
 }
@@ -672,6 +772,7 @@ transaction|moto_ecommerce_ind|string|Terminal setting for MotoECICode (default 
 transaction|terminal_type|string|Terminal setting for TerminalType (default value "ECommerce")
 transaction|reverse_reason|string|Element field ReversalType
 transaction|billing_address|hash|
+transaction|shipping_address|hash|
 billing_address|address1|string|
 billing_address|address2|string|
 billing_address|city|string|
@@ -679,6 +780,12 @@ billing_address|state|string|
 billing_address|zip|string|
 billing_address|email|string|
 billing_address|phone|string|
+shipping_address|address1|string|
+shipping_address|address2|string|
+shipping_address|city|string|
+shipping_address|state|string|
+shipping_address|zip|string|
+shipping_address|phone|string|
 
 ```javascript
 Authorize Sample:
@@ -1528,7 +1635,8 @@ Capture Sample:
 
 **Developer Documentation:** https://www.gpdevportal.com/
 
-* Global Payments supports the 'reverse' action 
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
+* Global Payments supports the 'reverse' action
 
 **Supported Parameters**
 
@@ -1634,17 +1742,19 @@ credit_card|verification_value|string|CVV/CSC
 credit_card|first_name|string|Cardholder first name
 credit_card|last_name|string|Cardholder last name
 credit_card|track_data|string|Track 1/Track 2 data
+check|name|string|Name under which the account is maintained at the bank
 check|routing_number|string|
 check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 check|number|string|
 check|account_type|string|
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
-transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|authorization|string|Required only for capture, refund, reverse, and void transactions. Obtained from the authorize or purchase actions
 transaction|order_id|string|
 transaction|email|string|
 transaction|customer|string|
 transaction|report_group|string|
 transaction|order_source|string|
+transaction|reverse_reason|string|
 transaction|merchant_affiliate|string|
 transaction|merchant_campaign|string|
 transaction|merchant_grouping_id|string|
@@ -1808,6 +1918,8 @@ Capture Sample:
 
 **URL:** http://www.maxipago.com/
 
+**Default Currency:** BRL
+
 **Developer Documentation:** http://www.maxipago.com/docs/maxiPago_API_Latest.pdf
 
 **Supported Parameters**
@@ -1825,6 +1937,7 @@ credit_card|first_name|string|Cardholder first name
 credit_card|last_name|string|Cardholder last name
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
 transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|currency|string|
 transaction|order_id|string|
 transaction|processor|string|Defaults to "1" in the sandbox environment and "4" in the production environment
 transaction|ip|string|
@@ -2269,6 +2382,7 @@ transaction|description|string|
 transaction|email|string|
 transaction|ip|string|
 transaction|customer|string|
+transaction|processor|string|
 transaction|billing_address|hash|
 transaction|shipping_address|hash|
 transaction|card_number|string|Required only for refund transactions. Last 4 numbers of the credit card
@@ -2448,7 +2562,9 @@ Capture Sample:
 
 **Developer Documentation:** http://download.chasepaymentech.com
 
-AVS is only supported for countries: US CA UK GB
+* AVS is only supported for countries: US CA UK GB
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
+
 **Supported Parameters**
 
 Parent|Field Name|Type|Notes
@@ -2567,6 +2683,7 @@ Capture Sample:
 **URL:** http://www.paydollar.com
 
 * You must whitelist the TokenEx production IPs with PayDollar to use this integeration in the production environment
+* When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
 
 **Supported Parameters**
 
