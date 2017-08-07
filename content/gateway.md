@@ -2289,12 +2289,18 @@ credit_card|number|string|This is your TokenEx Token - Tokenex will replace the 
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
 credit_card|verification_value|string|CVV/CSC
+check|routing_number|string|
+check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+check|number|string|
+check|account_type|string|
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
 transaction|authorization|string|Required only for capture, refund, and void transactions
 transaction|order_id|string|
 transaction|customer|string|
 transaction|cavv|string|
 transaction|crypt_type|string|Default value is 7
+transaction|order_source|string|ACH SEC value. Default to "web"
+transaction|drivers_license_number|string|
 transaction|billing_address|hash|
 billing_address|address1|string|
 billing_address|zip|string|
@@ -2583,6 +2589,7 @@ credit_card|last_name|string|Cardholder last name
 check|routing_number|string|
 check|account_number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 check|account_type|string|
+check|name|string|Name under which the account is maintained at the bank
 transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
 transaction|currency|string|Default value is used if this value is not set. Format ISO alpha code
 transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
@@ -2603,6 +2610,8 @@ transaction|dwwalletid|string|
 transaction|dwsli|string|
 transaction|dwincentiveind|string|
 transaction|digitalwallettype|string|
+transaction|processor|string|Check payments only, ECPAuthMethod
+transaction|authentication_method|string|Check payments only, BankPmtDelv, Default value is 'B'
 transaction|billing_address|hash|
 billing_address|address1|string|
 billing_address|address2|string|
