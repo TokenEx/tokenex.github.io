@@ -20,6 +20,7 @@ To begin using this service you simply need to make a few modifications your cod
 3. Add your Authentication Headers
 	* TX_TokenExID
 	* TX_APIKey 
+4. Wrap the field in the HTTP Body with three curly braces
 	* example: {{{4242424242424242}}}
 	
 **HTTP Request Headers**
