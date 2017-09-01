@@ -1718,6 +1718,108 @@ Capture Sample:
 ```
 
 
+### Isbank (NestPay)
+
+**URL:** www.isbank.com.tr
+
+**Default Currency:** TRY
+
+**Supported Parameters**
+
+Parent|Field Name|Type|Notes
+---|---|---|---
+gateway|name|string|**IsbankGateway**
+gateway|login|string|Isbank API Account Name
+gateway|password|string|Isbank API password
+gateway|merchant_id|string|Isbank Client ID
+credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
+credit_card|month|string|1 or 2 digit value. Example: 11
+credit_card|year|string|4 digit value. Example: 2017
+credit_card|verification_value|string|CVV/CSC
+transaction|amount|integer|Transaction amount in cents. Example: $10.00 should be sent as 1000
+transaction|currency|string|
+transaction|authorization|string|Required only for capture, refund, and void transactions. Obtained from the authorize or purchase actions
+transaction|order_id|string|
+transaction|id|string|
+transaction|report_group|string|Group ID
+transaction|description|string|
+transaction|email|string|
+transaction|eci|string|
+transaction|xid|string|
+transaction|cavv|string|
+transaction|billing_address|hash|
+transaction|shipping_address|hash|
+billing_address|name|string|
+billing_address|company|string|
+billing_address|address1|string|
+billing_address|address2|string|
+billing_address|city|string|
+billing_address|zip|string|
+billing_address|country|string|
+billing_address|phone|string|
+shipping_address|name|string|
+shipping_address|company|string|
+shipping_address|address1|string|
+shipping_address|address2|string|
+shipping_address|city|string|
+shipping_address|zip|string|
+shipping_address|country|string|
+shipping_address|phone|string|
+
+```javascript
+Authorize Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 1,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "IsbankGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX",
+      "merchant_id": "XXXX"
+    },
+    "credit_card": {
+      "number": "4111114356431111",
+      "month": "4",
+      "year": "2016",
+      "verification_value": "111"
+    },
+    "transaction": {
+      "amount": 1000,
+      "order_id": "12345",
+      "billing_address": {
+        "name": "Bob Smith",
+        "address1": "123 Maple Street",
+        "city": "Tulsa",
+        "zip": "74119"
+      }
+    }
+  }
+}
+```
+```javascript
+Capture Sample:
+{
+  "APIKey": "XXXXXXXXXX",
+  "TokenExID": "XXXXXXXXXX",
+  "TransactionType": 2,
+  "TransactionRequest": {
+    "gateway": {
+      "name": "IsbankGateway",
+      "login": "XXXXXXXXXX",
+      "password": "XXXXXXXXXX",
+      "merchant_id": "XXXX"
+    },
+    "transaction": {
+      "authorization": "359308705#1111",
+      "amount": 1000
+    }
+  }
+}
+```
+
+
 ### Litle & Co
 
 **URL:** http://www.litle.com
