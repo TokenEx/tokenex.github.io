@@ -323,7 +323,7 @@ Batch File Processing | 162.218.139.219
 
 **Test Environment:** [https://test-my.tokenex.com](https://test-my.tokenex.com)
 
-**Production Environment:** [https://test-my.tokenex.com](https://test-my.tokenex.com)
+**Production Environment:** [https://my.tokenex.com](https://test-my.tokenex.com)
 
 
 ## Code Examples
