@@ -319,6 +319,12 @@ Transparent Gateway API | 199.79.48.163
 Payment Services | 199.79.48.228
 Batch File Processing | 162.218.139.219
 
+## Customer Portal
+
+**Test Environment:** [https://test-my.tokenex.com](https://test-my.tokenex.com)
+
+**Production Environment:** [https://test-my.tokenex.com](https://test-my.tokenex.com)
+
 
 ## Code Examples
 
