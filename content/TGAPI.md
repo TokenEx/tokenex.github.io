@@ -166,6 +166,7 @@ If this process is successful, the value "\*\*\*SUCCESS\*\*\*" will appear in pl
 
 Before you begin using the Transparent Gateway API, you need to check to see if TokenEx has allowed communication with the host. This is accomplished by a GET request to https://test-api.tokenex.com/TransparentGatewayAPI/Hosts. 
 
+If the remote API's host name is not in the list, please open a support ticket in our [Customer Portal][portal] to have it added. 
 
 [portal]: #appendix-customer-portal
 [tgapiError]: #transparent-gateway-api-error-handling
