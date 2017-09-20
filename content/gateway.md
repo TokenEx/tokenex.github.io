@@ -4526,7 +4526,7 @@ Capture Sample:
 
 **Default Currency:** GBP
 
-**Developer Documentation:** http://support.worldpay.com/support/kb/gg/pdf/dxml.pdf
+**Developer Documentation:** http://support.worldpay.com/support/kb/bg/pdf/bgxmldirect.pdf
 
 * When a non-fractional currency is supplied, 'amount' should be specified with an explicit 2 decimal places. Example for JPY currency: amount of 3000 = 30 Yen
 
@@ -4537,6 +4537,7 @@ Parent|Field Name|Type|Notes
 gateway|name|string|**WorldpayGateway**
 gateway|login|string|Worldpay XMl Login
 gateway|password|string|Worldpay XML Password
+gateway|merchant_id|string|Worldpay Merchant Code
 credit_card|number|string|This is your TokenEx Token - Tokenex will replace the Token with the Detokenized number
 credit_card|month|string|1 or 2 digit value. Example: 11
 credit_card|year|string|4 digit value. Example: 2017
