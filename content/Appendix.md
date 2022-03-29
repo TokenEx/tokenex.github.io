@@ -5,14 +5,7 @@ TokenEx designed 'Token Schemes' to  facilitate multi-data set acceptance withou
 
 For instance, if you have business requirements that hinge upon the BIN number of a credit card, you could use a format preserving Token Scheme that will retain the first 6 digits of the input data. This allows your existing business logic to remain intact while still securing your data with a tokenized environment. 
 
-Token Schemes can be either multi use or single use. With a multi-use token scheme, the relationship between the token and input data has a one to one mapping. In order words, if you send the same input data multiple times, you'll always be returned the same token value. In contrast, with a single use token scheme, you would receive a new token value ever time.  
 
-###sixTOKENfour
-**Description:** This format will return a LUHN compliant token retaining the original first 6 and last 4 digits of the card number.
-
-**Validation:** Numeric(0-9), Luhn compliant
-
-**Length:** 13-19
 
 **Token Mapping:** 1:1
 
